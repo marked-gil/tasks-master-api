@@ -1,108 +1,119 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tasks Master
+![Am I Responsive Screenshot]()     
+**Tasks Master**
+[View Live Website.]
 
-Welcome marked-gil,
+## TABLE OF CONTENTS
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## User Experience Design (UXD)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+### **STRATEGY**
+#### **Main Goal:**
 
-## Gitpod Reminders
+#### **Target Audience:**
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+#### **The Use of Agile Methodology**
 
-`python3 -m http.server`
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-A blue button should appear to click: _Make Public_,
+#### **EPICS:**
 
-Another blue button should appear to click: _Open Browser_.
+#### **User Stories:**
+Iteration 1:    
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Iteration 2:    
 
-A blue button should appear to click: _Make Public_,
+Iteration 3:    
 
-Another blue button should appear to click: _Open Browser_.
+Iteration 4:    
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-To log into the Heroku toolbelt CLI:
+### **SCOPE**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### **Planned Features**
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-------
+### **SKELETON**
+#### **Database Schema**
 
-## Release History
+## Features
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Features Left for Future Implementation
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Fixed Bugs
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+* ISSUE:    
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    * INTENDED OUTCOME:     
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+    * SOLUTION:     
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Bugs Left To Fix
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Testing
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## Deployment
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### **Version Control**
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+**Git** was a crucial tool used to track changes that were made in the repository. The following git commands were mainly used in developing this program:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+* `git status` — to show the status of the repository by displaying the files that have been staged and are ready for commit, those that are not, and those that are untracked. 
+* `git add <file name>` — to add file or changes in the file to the staging area before they can be committed
+* `git commit -m "message"` — to add/record files or changes to the local repository
+* `git push` — to upload the local repository to the remote repository, such as GitHub
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### **Heroku Deployment**
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
 
-------
+### **Cloning from GitHub**
 
-## FAQ about the uptime script
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-**Why have you added this script?**
+## Technologies
+This project uses the following tools:
+* Backend Programming Language:
+    * [Python](https://www.python.org/)
+* Web Framework:
+    * [Django](https://www.djangoproject.com) - web framework used in developing this project
+* Deployment Platform:
+    * [Heroku](https://www.heroku.com) - the cloud platform used for deployment of the website
+* Media and Asset Storage:
+    * [Cloudinary](https://cloudinary.com/) - where the assets of this project, including photos are stored
+* Database:
+    * [ElephantSQL](https://www.elephantsql.com/) - serves as the PostgreSQL database for this project
+* Modules and Libraries:
+    * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
+    * [datetime module](https://docs.python.org/3/library/datetime.html) - used to determine the expired events and manipulating their dates for recycling
+    * [django-database-url](https://pypi.org/project/dj-database-url/) - used for connecting Django to database
+* [Miniwebtool](https://miniwebtool.com/django-secret-key-generator/) - as Django secret_key generator
+* `Git` - as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary
+* `Gitpod` - the cloud-based IDE (Integrated Developer Environment) used to code this site
+* `GitHub` - stores the source code repository for this website
+* [Diffchecker](https://www.diffchecker.com/#) - used when comparing codes tested in another IDE to the codes in gitpod     
+* [Grammarly](https://www.grammarly.com/) - used to check the grammar of the contents in this project   
+* Web browsers (Google Chrome, Firefox, Safari, Microsoft Edge) 
+* For Testing and Validation:   
+    * [CI Python Linter](https://pep8ci.herokuapp.com/) 
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+[<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-**How will this affect me?**
+## Credits
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### Content
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+### Media
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
 
-**So….?**
+### References
+* Main References:
+    * [Code Institute](https://codeinstitute.net/ie/)
+    * [Django Documentation](https://docs.djangoproject.com/en/3.2/)    
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Acknowledgment
