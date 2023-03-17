@@ -92,6 +92,8 @@ This project uses the following tools:
     * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
     * [datetime module](https://docs.python.org/3/library/datetime.html) - used to determine the expired events and manipulating their dates for recycling
     * [django-database-url](https://pypi.org/project/dj-database-url/) - used for connecting Django to database
+    * [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/) - facilitates integration with Cloudinary by implementing Django Storage API
+    * [cloudinary](https://pypi.org/project/cloudinary/) - to quickly and easily integrate the application with Cloudinary
 * [Miniwebtool](https://miniwebtool.com/django-secret-key-generator/) - as Django secret_key generator
 * `Git` - as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary
 * `Gitpod` - the cloud-based IDE (Integrated Developer Environment) used to code this site
