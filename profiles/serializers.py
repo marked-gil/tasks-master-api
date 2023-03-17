@@ -3,6 +3,7 @@ from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """ Serializer for Profile Model """
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
