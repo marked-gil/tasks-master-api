@@ -5,6 +5,14 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     """ Serializer for Profile Model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    datetime_created = serializers.DateTimeField(
+        format="%b %d, %Y | %H:%M",
+        read_only=True
+    )
+    datetime_updated = serializers.DateTimeField(
+        format="%b %d, %Y | %H:%M",
+        read_only=True
+    )
 
     class Meta:
         """
