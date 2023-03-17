@@ -16,8 +16,8 @@ class Category(models.Model):
 
     class Meta:
         """
-        Arranges the Category instances based on their datetime_updated
-        field in descending order
+        Sets the ordering and uniqueness of the Category instance
+        in the database
         """
         ordering = ['-datetime_updated']
         unique_together = [['owner', 'category_name']]
