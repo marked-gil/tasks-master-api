@@ -5,7 +5,7 @@ import uuid
 
 class Task(models.Model):
     """
-    Model for the Tasks' table in the database
+    Model for the Task table in the database
     """
     PROGRESS = [
         ("overdue", "Overdue"),
