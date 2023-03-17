@@ -18,6 +18,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate_image(self, photo):
         """
         Validates the uploaded images to keep them within set parameter size
+        [Code copied from CI's drf-api repository]
         """
         if photo.size > 1024 * 1024 * 2:
             raise serializers.ValidationError(
