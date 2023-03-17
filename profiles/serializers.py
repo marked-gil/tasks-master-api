@@ -14,3 +14,21 @@ class ProfileSerializer(serializers.ModelSerializer):
             'id', 'owner', 'first_name', 'last_name', 'email', 'image',
             'datetime_created', 'datetime_updated'
         ]
+
+    def validate_image(self, photo):
+        """
+        Validates the uploaded images to keep them within set parameter size
+        """
+        if photo.size > 1024 * 1024 * 2:
+            raise serializers.ValidationError(
+                'Image too large! Only 2 MB is allowed.'
+            )
+        if photo.image.width > 2000:
+            raise serializers.ValidationError(
+                'Image width & height should be less than 2000px'
+            )
+        if photo.image.height > 2000:
+            raise serializers.ValidationError(
+                'Image width & height should be less than 2000px'
+            )
+        return photo
