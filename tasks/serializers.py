@@ -5,6 +5,7 @@ from .models import Task
 class TaskSerializer(serializers.ModelSerializer):
     """ Serializer for Task Model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     due_date = serializers.DateField(format="%d %B %Y")
     due_time = serializers.TimeField(format="%I:%M %p", required=False)
     progress = serializers.ReadOnlyField()
@@ -21,6 +22,6 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
-            'id', 'owner', 'task_name', 'details', 'due_date', 'due_time',
-            'progress', 'datetime_created', 'datetime_updated'
+            'id', 'owner', 'profile_id', 'task_name', 'details', 'due_date',
+            'due_time', 'progress', 'datetime_created', 'datetime_updated'
         ]

@@ -91,7 +91,7 @@ This project uses the following tools:
     * [ElephantSQL](https://www.elephantsql.com/) - serves as the PostgreSQL database for this project
 * Modules and Libraries:
     * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
-    * [datetime module](https://docs.python.org/3/library/datetime.html) - used to determine the expired events and manipulating their dates for recycling
+    * [datetime module](https://docs.python.org/3/library/datetime.html) - used for the created dates in the project
     * [django-database-url](https://pypi.org/project/dj-database-url/) - used for connecting Django to database
     * [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/) - facilitates integration with Cloudinary by implementing Django Storage API
     * [cloudinary](https://pypi.org/project/cloudinary/) - to quickly and easily integrate the application with Cloudinary
