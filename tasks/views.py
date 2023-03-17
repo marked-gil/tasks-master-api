@@ -9,7 +9,7 @@ class TaskList(generics.ListCreateAPIView):
     queryset = Task.objects.all()
 
     def perform_create(self, serializer):
-        """ Creates a Task model instance for the current user """
+        """ Sets the current user as the owner """
         serializer.save(owner=self.request.user)
 
 
