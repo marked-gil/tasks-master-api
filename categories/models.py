@@ -9,8 +9,7 @@ class Category(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    category_name = models.CharField(max_length=50, blank=False, editable=True,
-                                     unique=True)
+    category_name = models.CharField(max_length=50, blank=False, editable=True)
     description = models.TextField(max_length=100, blank=True, editable=True)
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
@@ -21,6 +20,7 @@ class Category(models.Model):
         field in descending order
         """
         ordering = ['-datetime_updated']
+        unique_together = [['owner', 'category_name']]
 
     def __str__(self):
         """

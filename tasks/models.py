@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from categories.models import Category
 import uuid
 
 
@@ -24,7 +25,8 @@ class Task(models.Model):
         max_length=250, blank=False, editable=True, unique_for_date="due_date"
     )
     details = models.TextField(max_length=1000, blank=True, editable=True)
-    # category = models.CharField(choices=)
+    # Category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                #  default=DEFAULT_CATEGORY)
     due_date = models.DateField(blank=False)
     due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
