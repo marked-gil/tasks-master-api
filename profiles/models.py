@@ -1,4 +1,5 @@
 from django.db import models
+from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 import uuid
@@ -15,7 +16,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=150, unique=True)
     image = models.ImageField(
         upload_to='images/',
-        default=''
+        default='../default_profile_l102wx'
     )
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
@@ -32,3 +33,8 @@ class Profile(models.Model):
         Returns the owner of the profile
         """
         return f"{self.owner}'s profile"
+
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(owner=instance)
