@@ -82,6 +82,7 @@ This project uses the following tools:
     * [Python](https://www.python.org/)
 * Web Framework:
     * [Django](https://www.djangoproject.com) - web framework used in developing this project
+    * [Django REST Framework](https://www.django-rest-framework.org/) - toolkit used to build this web API
 * Deployment Platform:
     * [Heroku](https://www.heroku.com) - the cloud platform used for deployment of the website
 * Media and Asset Storage:
