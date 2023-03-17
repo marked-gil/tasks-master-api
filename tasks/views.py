@@ -11,3 +11,9 @@ class TaskList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         """ Creates a Task model instance for the current user """
         serializer.save(owner=self.request.user)
+
+
+class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
+    lookup_url_kwarg = 'id'

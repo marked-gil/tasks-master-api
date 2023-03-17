@@ -15,7 +15,7 @@ class Task(models.Model):
     PRIORITY = [
         ("low", "Low"),
         ("medium", "Medium"),
-        ("high", "High")        
+        ("high", "High")
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
