@@ -108,6 +108,8 @@ This project uses the following tools:
 
 ## Credits
 
+* [Stackoverflow](https://stackoverflow.com/questions/65908861/how-to-automatically-create-new-profile-once-a-new-user-is-created-in-django) - to automatically create a profile for registered users using @receiver decorator and Django signal
+
 ### Content
 
 ### Media

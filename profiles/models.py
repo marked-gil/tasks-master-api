@@ -36,5 +36,10 @@ class Profile(models.Model):
 
     @receiver(post_save, sender=User)
     def create_profile(sender, instance, created, **kwargs):
+        """
+        Automatically creates a profile for registered users
+        (Idea to use @receiver decorator taken from Stackoverflow.
+        See Credits in README.md)
+        """
         if created:
             Profile.objects.create(owner=instance)
