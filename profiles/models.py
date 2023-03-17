@@ -13,7 +13,9 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
-    email = models.EmailField(max_length=150, unique=True)
+    email = models.EmailField(
+        max_length=150, unique=True, blank=True, null=True
+    )
     image = models.ImageField(
         upload_to='images/',
         default='../default_profile_l102wx'
