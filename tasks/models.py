@@ -20,7 +20,7 @@ class Task(models.Model):
     details = models.TextField(max_length=1000, blank=True, editable=True)
     # category = models.CharField(choices=)
     due_date = models.DateField(blank=False)
-    due_time = models.TimeField(blank=True)
+    due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
                                 default="todo")
     datetime_created = models.DateTimeField(auto_now_add=True)
@@ -30,7 +30,7 @@ class Task(models.Model):
         """
         Arranges the Task's instances based on their due dates
         """
-        ordering = ['-due_date']
+        ordering = ['due_date']
 
     def __str__(self):
         """
