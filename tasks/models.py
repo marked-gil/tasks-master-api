@@ -12,6 +12,12 @@ class Task(models.Model):
         ("todo", "Todo")
     ]
 
+    PRIORITY = [
+        ("low", "Low"),
+        ("medium", "Medium"),
+        ("high", "High")        
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     task_name = models.CharField(
@@ -23,6 +29,7 @@ class Task(models.Model):
     due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
                                 default="todo")
+    priority = models.CharField(max_length=10, choices=PRIORITY, default="low")
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
 
