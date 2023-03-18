@@ -5,6 +5,7 @@ from .serializers import TaskSerializer
 
 
 class TaskList(generics.ListCreateAPIView):
+    """ """
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
 
@@ -14,6 +15,7 @@ class TaskList(generics.ListCreateAPIView):
 
 
 class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
+    """ """
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     lookup_url_kwarg = 'id'
