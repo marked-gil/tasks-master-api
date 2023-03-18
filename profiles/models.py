@@ -2,6 +2,7 @@ from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from categories.models import Category
 import uuid
 
 
@@ -43,5 +44,9 @@ class Profile(models.Model):
         (Idea to use @receiver decorator taken from Stackoverflow.
         See Credits in README.md)
         """
+        DEFAULT_CATEGORIES = ["At Home", "At Work"]
+
         if created:
             Profile.objects.create(owner=instance)
+            for cat_name in DEFAULT_CATEGORIES:
+                Category.objects.create(owner=instance, category_name=cat_name)
