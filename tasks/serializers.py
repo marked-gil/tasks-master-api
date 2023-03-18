@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Task
+from categories.models import Category
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -22,7 +23,7 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
-            'id', 'owner', 'profile_id', 'task_name', 'details', 'due_date',
-            'due_time', 'priority', 'progress', 'datetime_created',
+            'id', 'owner', 'profile_id', 'task_name', 'details', 'category',
+            'due_date', 'due_time', 'priority', 'progress', 'datetime_created',
             'datetime_updated'
         ]

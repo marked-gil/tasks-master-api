@@ -25,8 +25,8 @@ class Task(models.Model):
         max_length=250, blank=False, editable=True, unique_for_date="due_date"
     )
     details = models.TextField(max_length=1000, blank=True, editable=True)
-    # Category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                #  default=DEFAULT_CATEGORY)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 default=None)
     due_date = models.DateField(blank=False)
     due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
