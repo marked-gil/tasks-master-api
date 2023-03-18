@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Task
-from categories.models import Category
 
 
 class TaskSerializer(serializers.ModelSerializer):
