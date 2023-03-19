@@ -24,7 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )]
+}
+
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_SECURE': True,
+    'JWT_AUTH_COOKIE': 'my-app-auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'my-refresh-token',
 }
 
 # Quick-start development settings - unsuitable for production
@@ -51,6 +63,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
 
     'profiles',
     'tasks',
