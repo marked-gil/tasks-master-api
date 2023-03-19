@@ -27,5 +27,9 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
     Retrieves, updates, and deletes a single Task instance
     """
     serializer_class = TaskSerializer
-    queryset = Task.objects.all()
     lookup_url_kwarg = 'id'
+
+    def get_queryset(self):
+        """ Returns a single task created by the current user """
+        user = self.request.user
+        return Task.objects.filter(owner=user)
