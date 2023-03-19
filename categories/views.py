@@ -25,5 +25,9 @@ class CategoryDetails(generics.RetrieveUpdateDestroyAPIView):
     Retrieves, updates, and deletes a single Category instance
     """
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
     lookup_url_kwarg = 'id'
+
+    def get_queryset(self):
+        """ Returns all categories created by the current user """
+        user = self.request.user
+        return Category.objects.filter(owner=user)
