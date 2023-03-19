@@ -94,7 +94,7 @@ This project uses the following tools:
     * [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/) - facilitates integration with Cloudinary by implementing Django Storage API
     * [cloudinary](https://pypi.org/project/cloudinary/) - to quickly and easily integrate the application with Cloudinary
     * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/index.html) - a set of REST API endpoints to handle User Registration and Authentication tasks.
-    * Simple JWT [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html) - provides a JSON Web Token authentication backend for the Django REST Framework
+    * [Simple JWT]((https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html)) (`djangorestframework-simplejwt`) - provides a JSON Web Token authentication backend for the Django REST Framework
     * [datetime module](https://docs.python.org/3/library/datetime.html) - used for the created dates in the project
     * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
 

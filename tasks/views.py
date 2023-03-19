@@ -5,9 +5,17 @@ from .serializers import TaskSerializer
 
 
 class TaskList(generics.ListCreateAPIView):
-    """ """
+    """
+    Returns a list of current user's tasks, and creates new task
+    """
     serializer_class = TaskSerializer
-    queryset = Task.objects.all()
+
+    def get_queryset(self):
+        """
+        Returns all tasks created by the logged-in user
+        """
+        user = self.request.user
+        return Task.objects.filter(owner=user)
 
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
@@ -15,7 +23,9 @@ class TaskList(generics.ListCreateAPIView):
 
 
 class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
-    """ """
+    """
+    Retrieves, updates, and deletes a single Task instance
+    """
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
     lookup_url_kwarg = 'id'
