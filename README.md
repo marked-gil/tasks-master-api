@@ -90,11 +90,14 @@ This project uses the following tools:
 * Database:
     * [ElephantSQL](https://www.elephantsql.com/) - serves as the PostgreSQL database for this project
 * Modules and Libraries:
-    * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
-    * [datetime module](https://docs.python.org/3/library/datetime.html) - used for the created dates in the project
     * [django-database-url](https://pypi.org/project/dj-database-url/) - used for connecting Django to database
     * [django-cloudinary-storage](https://pypi.org/project/django-cloudinary-storage/) - facilitates integration with Cloudinary by implementing Django Storage API
     * [cloudinary](https://pypi.org/project/cloudinary/) - to quickly and easily integrate the application with Cloudinary
+    * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/index.html) - a set of REST API endpoints to handle User Registration and Authentication tasks.
+    * Simple JWT [djangorestframework-simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html) - provides a JSON Web Token authentication backend for the Django REST Framework
+    * [datetime module](https://docs.python.org/3/library/datetime.html) - used for the created dates in the project
+    * `OS` module in Python - used in the `settings.py` file to perform functions that involve the operating system, such as checking for environment variables
+
 * [Miniwebtool](https://miniwebtool.com/django-secret-key-generator/) - as Django secret_key generator
 * `Git` - as a version control system, was used to monitor and record changes made when building the site. This allowed for the restoration of an earlier version of the code when it was necessary
 * `Gitpod` - the cloud-based IDE (Integrated Developer Environment) used to code this site
