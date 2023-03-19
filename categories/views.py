@@ -9,7 +9,11 @@ class CategoryList(generics.ListCreateAPIView):
     Returns a list of all categories, and creates new category
     """
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
+
+    def get_queryset(self):
+        """ Returns all categories created by the current user """
+        user = self.request.user
+        return Category.objects.filter(owner=user)
 
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
