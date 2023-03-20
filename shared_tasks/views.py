@@ -16,3 +16,7 @@ class SharedTaskList(generics.ListCreateAPIView):
         """
         user = self.request.user
         return SharedTask.objects.filter(owner=user)
+
+    def perform_create(self, serializer):
+        """ Sets the current user as the owner """
+        serializer.save(owner=self.request.user)

@@ -5,7 +5,6 @@ from .models import SharedTask
 class SharedTaskSerializer(serializers.ModelSerializer):
     """ """
     owner = serializers.ReadOnlyField(source='owner.username')
-    task = serializers.ReadOnlyField(source='task.task_name')
     datetime_created = serializers.DateTimeField(
         format="%b %d, %Y | %H:%M",
         read_only=True
