@@ -1,10 +1,16 @@
 from rest_framework import serializers
+from tasks.models import Task
 from .models import Comment
 
 
 class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    task = serializers.SlugRelatedField(
+        slug_field='task_name',
+        queryset=Task.objects.all()
+    )
+    task_id = serializers.ReadOnlyField(source='task.id')
     is_reply_to_comment = serializers.SerializerMethodField()
     datetime_created = serializers.DateTimeField(
         format="%b %d, %Y | %H:%M",
@@ -23,6 +29,6 @@ class CommentSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Comment
         fields = [
-            'id', 'owner', 'task', 'content', 'reply_to',
+            'id', 'owner', 'task', 'task_id', 'content', 'reply_to',
             'is_reply_to_comment', 'datetime_created', 'datetime_updated'
         ]
