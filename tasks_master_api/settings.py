@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'tasks',
     'categories',
     'shared_tasks',
+    'comments',
 ]
 
 MIDDLEWARE = [
