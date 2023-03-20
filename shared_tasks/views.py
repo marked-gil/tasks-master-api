@@ -26,9 +26,9 @@ class SharedTaskList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class SharedTaskDetails(generics.RetrieveDestroyAPIView):
+class SharedTaskDetails(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieves and deletes a single SharedTask instance
+    Retrieves, updates and deletes a single SharedTask instance
     """
     serializer_class = SharedTaskSerializer
     permission_classes = [IsOwner | IsAuthenticatedReadOnly]
