@@ -9,7 +9,7 @@ from .serializers import CommentSerializer
 class CommentList(generics.ListCreateAPIView):
     """
     Returns a list of comments, and creates new comments
-    """   
+    """
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 

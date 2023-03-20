@@ -6,5 +6,4 @@ from .models import Comment
 class CommentAdmin(admin.ModelAdmin):
     """ Sets up the admin display for Comment model """
     list_display = ('id', 'owner', 'content', 'task', 'reply_to',
-                    'is_reply_to_comment', 'datetime_updated',
-                    'datetime_created',)
+                    'datetime_updated', 'datetime_created',)

@@ -5,6 +5,7 @@ from .models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_reply_to_comment = serializers.SerializerMethodField()
     datetime_created = serializers.DateTimeField(
         format="%b %d, %Y | %H:%M",
         read_only=True
@@ -13,6 +14,10 @@ class CommentSerializer(serializers.ModelSerializer):
         format="%b %d, %Y | %H:%M",
         read_only=True
     )
+
+    def get_is_reply_to_comment(self, obj):
+        """ Boolean value for a comment replied to another comment """
+        return bool(obj.reply_to)
 
     class Meta:
         """ Specifies the fields returned by the API """
