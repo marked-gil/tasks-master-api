@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from tasks.models import Task
 from .models import Comment
 
@@ -11,6 +12,10 @@ class CommentSerializer(serializers.ModelSerializer):
         queryset=Task.objects.all()
     )
     task_id = serializers.ReadOnlyField(source='task.id')
+    reply_to = serializers.SlugRelatedField(
+        slug_field='username',
+        queryset=User.objects.all()
+    )
     is_reply_to_comment = serializers.SerializerMethodField()
     datetime_created = serializers.DateTimeField(
         format="%b %d, %Y | %H:%M",
