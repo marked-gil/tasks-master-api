@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('tasks.urls')),
     path('', include('categories.urls')),
     path('', include('shared_tasks.urls')),
+    path('', include('comments.urls'))
 ]
