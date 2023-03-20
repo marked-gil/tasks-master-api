@@ -13,10 +13,12 @@ class SharedTaskList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         """
-        Returns all shared tasks created by the current user
+        Returns shared tasks created by, or shared to, the current user
         """
         user = self.request.user
-        return SharedTask.objects.filter(Q(shared_to=user.id) | Q(owner=user))
+        return SharedTask.objects.filter(
+            Q(shared_to=user.id) | Q(owner=user)
+        ).distinct()
 
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
