@@ -23,3 +23,18 @@ class SharedTaskList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
         serializer.save(owner=self.request.user)
+
+
+class SharedTaskDetails(generics.RetrieveDestroyAPIView):
+    """
+    Retrieves and deletes a single SharedTask instance
+    """
+    serializer_class = SharedTaskSerializer
+    lookup_url_kwarg = 'id'
+
+    def get_queryset(self):
+        """ Returns a single task created by the current user """
+        user = self.request.user
+        return SharedTask.objects.filter(
+            Q(shared_to=user.id) | Q(owner=user)
+        ).distinct()
