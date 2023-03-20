@@ -18,3 +18,11 @@ class SharedTask(models.Model):
     shared_to = models.ManyToManyField(User, related_name='sharing')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        """ Arranges comments based on their update """
+        ordering = ['-datetime_updated']
+
+    def __str__(self):
+        """ Returns the shared task's name """
+        return f"Shared: {self.task}"
