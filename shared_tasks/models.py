@@ -12,7 +12,7 @@ class SharedTask(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     task = models.ForeignKey(
         Task,
-        related_name='task',
+        related_name='shared_tasks',
         on_delete=models.CASCADE
     )
     shared_to = models.ManyToManyField(User, related_name='sharing')
