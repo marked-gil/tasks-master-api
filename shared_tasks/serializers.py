@@ -4,13 +4,24 @@ from .models import SharedTask
 from tasks.models import Task
 
 
+class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
+    """
+    Custom serializer for task field
+    [Idea taken from StackOverflow (See 'Credits' in README.md)]
+    """
+    def get_queryset(self):
+        """ Retrieves Task querysets created by current user """
+        queryset = Task.objects.all()
+        request = self.context.get('request', None)
+        tasks = SharedTask.objects.filter(
+            shared_to=request.user.id).values('task_id')
+        return queryset.filter(owner=request.user).distinct()
+
+
 class SharedTaskSerializer(serializers.ModelSerializer):
-    """ """
+    """ Serializer for SharedTask model """
     owner = serializers.ReadOnlyField(source='owner.username')
-    task = serializers.SlugRelatedField(
-        slug_field='task_name',
-        queryset=Task.objects.all()
-    )
+    task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.SerializerMethodField()
     shared_to = serializers.SlugRelatedField(
         many=True,
