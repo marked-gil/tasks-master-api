@@ -1,16 +1,31 @@
 from rest_framework import serializers
+from django.db.models import Q
 from django.contrib.auth.models import User
+from shared_tasks.models import SharedTask
 from tasks.models import Task
 from .models import Comment
+
+
+class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
+    """
+    Custom serializer for task field
+    [Idea taken from StackOverflow (See 'Credits' in README.md)]
+    """
+    def get_queryset(self):
+        """ Retrieves Task querysets created by current user """
+        queryset = Task.objects.all()
+        request = self.context.get('request', None)
+        tasks = SharedTask.objects.filter(
+            shared_to=request.user.id).values('task_id')
+        return queryset.filter(
+            Q(owner=request.user) | Q(id__in=tasks)
+        ).distinct()
 
 
 class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
-    task = serializers.SlugRelatedField(
-        slug_field='task_name',
-        queryset=Task.objects.all()
-    )
+    task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.ReadOnlyField(source='task.id')
     reply_to = serializers.SlugRelatedField(
         slug_field='username',
