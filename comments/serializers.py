@@ -12,7 +12,7 @@ class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
     [Idea taken from StackOverflow (See 'Credits' in README.md)]
     """
     def get_queryset(self):
-        """ Retrieves Task querysets created by current user """
+        """ Retrieves filtered Task querysets """
         queryset = Task.objects.all()
         request = self.context.get('request', None)
         tasks = SharedTask.objects.filter(
@@ -22,14 +22,34 @@ class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
         ).distinct()
 
 
+class ReplyToSlugRelatedSerializer(serializers.SlugRelatedField):
+    """
+    Custom serializer for reply_to field
+    [Idea taken from StackOverflow (See 'Credits' in README.md)]
+    """
+    def get_queryset(self):
+        """ Retrieves Comment filtered querysets """
+        queryset = Comment.objects.all()
+        request = self.context.get('request', None)
+        tasks = SharedTask.objects.filter(
+            shared_to=request.user.id).values('task_id')
+        return queryset.filter(
+            Q(owner=request.user) | Q(task__id__in=tasks)
+        ).distinct()
+
+
 class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
     task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.ReadOnlyField(source='task.id')
-    reply_to = serializers.SlugRelatedField(
-        slug_field='username',
-        queryset=User.objects.all()
+    reply_to = ReplyToSlugRelatedSerializer(
+        slug_field='content',
+        allow_null=True
+    )
+    reply_to_id = serializers.ReadOnlyField(
+        source='reply_to.id',
+        allow_null=True
     )
     is_reply_to_comment = serializers.SerializerMethodField()
     datetime_created = serializers.DateTimeField(
@@ -50,5 +70,6 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'owner', 'task', 'task_id', 'content', 'reply_to',
-            'is_reply_to_comment', 'datetime_created', 'datetime_updated'
+            'reply_to_id', 'is_reply_to_comment', 'datetime_created',
+            'datetime_updated'
         ]
