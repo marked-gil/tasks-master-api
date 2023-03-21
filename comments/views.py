@@ -5,6 +5,7 @@ from shared_tasks.models import SharedTask
 from .models import Comment
 from shared_tasks.models import SharedTask
 from .serializers import CommentSerializer
+from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
 
 
 class CommentList(generics.ListCreateAPIView):
@@ -31,6 +32,7 @@ class CommentDetails(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieves, updates and deletes a single Comment instance
     """
+    permission_classes = [IsOwner | IsAuthenticatedReadOnly]
     serializer_class = CommentSerializer
     lookup_url_kwarg = 'id'
 

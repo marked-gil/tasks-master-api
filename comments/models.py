@@ -13,7 +13,7 @@ class Comment(models.Model):
                               related_name='commenting')
     content = models.TextField(max_length=150, blank=True, editable=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    reply_to = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,
+    reply_to = models.ForeignKey('self', on_delete=models.CASCADE, null=True,
                                  blank=True, related_name='replied_to')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
