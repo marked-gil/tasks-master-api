@@ -20,8 +20,9 @@ class SharedTask(models.Model):
     datetime_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        """ Arranges comments based on their update """
+        """ Sets the order and uniqueness of instances """
         ordering = ['-datetime_updated']
+        unique_together = ['owner', 'task']
 
     def __str__(self):
         """ Returns the shared task's name """
