@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from .models import Category
+from tasks_master_api.permissions import IsOwner
 from .serializers import CategorySerializer
 
 
@@ -25,9 +26,6 @@ class CategoryDetails(generics.RetrieveUpdateDestroyAPIView):
     Retrieves, updates, and deletes a single Category instance
     """
     serializer_class = CategorySerializer
+    permission_classes = [IsOwner]
     lookup_url_kwarg = 'id'
-
-    def get_queryset(self):
-        """ Returns a single category created by the current user """
-        user = self.request.user
-        return Category.objects.filter(owner=user)
+    queryset = Category.objects.all()

@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
-from tasks_master_api.permissions import IsOwnerIsAuthenticated
+from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
 
 
 class ProfileList(generics.ListAPIView):
@@ -21,5 +21,5 @@ class ProfileDetails(generics.RetrieveUpdateAPIView):
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
-    permission_classes = [IsOwnerIsAuthenticated]
+    permission_classes = [IsOwner | IsAuthenticatedReadOnly]
     lookup_url_kwarg = 'id'
