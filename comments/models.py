@@ -11,7 +11,7 @@ class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='commenting')
-    content = models.TextField(max_length=150, blank=True, editable=True)
+    content = models.TextField(max_length=250, blank=True, editable=True)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     reply_to = models.ForeignKey('self', on_delete=models.CASCADE, null=True,
                                  blank=True, related_name='replied_to')
