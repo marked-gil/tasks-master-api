@@ -52,14 +52,8 @@ class CommentSerializer(serializers.ModelSerializer):
         allow_null=True
     )
     is_reply_to_comment = serializers.SerializerMethodField()
-    datetime_created = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
-    datetime_updated = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
+    datetime_created = serializers.DateTimeField(read_only=True)
+    datetime_updated = serializers.DateTimeField(read_only=True)
 
     def get_is_reply_to_comment(self, obj):
         """ Boolean value for a comment replied to another comment """

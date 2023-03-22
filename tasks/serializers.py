@@ -27,14 +27,8 @@ class TaskSerializer(serializers.ModelSerializer):
     progress = serializers.ReadOnlyField()
     is_shared = serializers.SerializerMethodField()
     shared_task_id = serializers.SerializerMethodField()
-    datetime_created = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
-    datetime_updated = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
+    datetime_created = serializers.DateTimeField(read_only=True)
+    datetime_updated = serializers.DateTimeField(read_only=True)
 
     def get_is_shared(self, obj):
         """ Shows if the task is shared or not"""

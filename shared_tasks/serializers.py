@@ -28,14 +28,8 @@ class SharedTaskSerializer(serializers.ModelSerializer):
         slug_field='username',
         queryset=User.objects.all()
     )
-    datetime_created = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
-    datetime_updated = serializers.DateTimeField(
-        format="%b %d, %Y | %H:%M",
-        read_only=True
-    )
+    datetime_created = serializers.DateTimeField(read_only=True)
+    datetime_updated = serializers.DateTimeField(read_only=True)
 
     def get_task_id(self, obj):
         """
