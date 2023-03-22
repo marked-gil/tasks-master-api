@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('task_name', models.CharField(max_length=250, unique_for_date=True)),
                 ('details', models.TextField(blank=True, max_length=1000)),
                 ('due_date', models.DateField()),
-                ('due_time', models.DateField(blank=True)),
+                ('due_time', models.TimeField()),
                 ('progress', models.CharField(choices=[('overdue', 'Overdue'), ('todo', 'Todo')], default='todo', max_length=15)),
                 ('datetime_created', models.DateTimeField(auto_now_add=True)),
                 ('datetime_updated', models.DateTimeField(auto_now=True)),
