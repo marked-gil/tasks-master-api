@@ -28,7 +28,7 @@ class Task(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  default=None)
     due_date = models.DateField(blank=False)
-    due_time = models.TimeField(blank=True, null=True)
+    due_time = models.CharField(max_length=10, blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
                                 default="todo")
     priority = models.CharField(max_length=10, choices=PRIORITY, default="low")
