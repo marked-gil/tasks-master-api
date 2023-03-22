@@ -43,6 +43,11 @@ class CommentSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.ReadOnlyField(source='task.id')
+    content = serializers.CharField(
+        max_length=250,
+        allow_blank=False,
+        style={'base_template': 'textarea.html'}
+    )
     reply_to = ReplyToSlugRelatedSerializer(
         slug_field='content',
         allow_null=True
