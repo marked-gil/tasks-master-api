@@ -46,11 +46,13 @@ Iteration 4:
 
 ## Fixed Bugs
 
-* ISSUE:    
+* ISSUE: I was migrating my app models to the production database but I got an error: `django.db.utils.ProgrammingError: cannot cast type integer to uuid` in my **comments** app. And so, I thought the easiest way to do was to delete my migration files from the `migrations` directory (which, now I learned, is not the best way to solve it). Unfortunately, when I did the migration again, I was presented with another error: `django.db.migrations.exceptions.InconsistenMigrationHistory`.
 
     * INTENDED OUTCOME:     
+    I want my models to be succesfully migrated to my PostgreSQL database to allow my application to run smoothly in production.
 
     * SOLUTION:     
+    As I do not have much data stored in the database yet, I just deleted the old database and created a new one. After having done that, I did the migration again. This time it worked. I got the idea to solve it from this link: https://forum.djangoproject.com/t/django-db-migrations-exceptions-inconsistenmigrationhistory/14129
 
 ## Bugs Left To Fix
 
