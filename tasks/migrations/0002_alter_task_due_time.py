@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='task',
             name='due_time',
-            field=models.TimeField(blank=True),
+            field=models.TimeField(blank=True, auto_now_add=True),
         ),
     ]
