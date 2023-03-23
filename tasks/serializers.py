@@ -49,10 +49,8 @@ class TaskSerializer(serializers.ModelSerializer):
         return obj.progress
 
     def get_is_shared(self, obj):
-        """ Shows if the task is shared or not"""
-        task_id = obj.id
-        shared_task = SharedTask.objects.filter(task=obj)
-        return bool(shared_task)
+        """ Shows if the task is shared or not """
+        return obj.shared_to.exists()
 
     class Meta:
         """ Specifies the fields returned by the API """

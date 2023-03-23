@@ -1,5 +1,6 @@
 from rest_framework import generics, filters
 from rest_framework.response import Response
+from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Task
 from .serializers import TaskSerializer
