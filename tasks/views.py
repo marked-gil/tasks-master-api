@@ -1,5 +1,6 @@
-from rest_framework import generics
+from rest_framework import generics, filters
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Task
 from .serializers import TaskSerializer
 
@@ -9,6 +10,14 @@ class TaskList(generics.ListCreateAPIView):
     Returns a list of current user's tasks, and creates new task
     """
     serializer_class = TaskSerializer
+    filter_backends = [
+        filters.SearchFilter,
+        filters.OrderingFilter,
+        DjangoFilterBackend
+    ]
+    filterset_fields = ['due_date', 'priority', 'progress', 'category']
+    ordering_fields = ['due_date', 'due_time', 'priority']
+    search_fields = ['category__category_name', 'task_name']
 
     def get_queryset(self):
         """
