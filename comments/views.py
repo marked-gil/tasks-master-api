@@ -1,7 +1,6 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from django.db.models import Q
-from shared_tasks.models import SharedTask
 from tasks.models import Task
 from .models import Comment
 from .serializers import CommentSerializer
@@ -17,12 +16,12 @@ class CommentList(generics.ListCreateAPIView):
     def get_queryset(self):
         """ Returns a single comment """
         user = self.request.user
-        tasks = Task.objects.filter(
+        task_ids = Task.objects.filter(
             Q(shared_to=user.id) | Q(owner=user)
         ).values('id')
         return Comment.objects.filter(
             Q(owner=user.id) |
-            Q(task__id__in=tasks)
+            Q(task__id__in=task_ids)
         ).distinct()
 
     def perform_create(self, serializer):
@@ -41,8 +40,9 @@ class CommentDetails(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         """ Returns a single comment """
         user = self.request.user
-        tasks = SharedTask.objects.filter(shared_to=user.id).values('task_id')
+        task_ids = Task.objects.filter(
+            Q(shared_to=user.id) | Q(owner=user)
+        ).values('id')
         return Comment.objects.filter(
-            Q(reply_to=user.id) | Q(owner=user.id) |
-            Q(task__id__in=tasks)
+            Q(owner=user.id) | Q(task__id__in=task_ids)
         ).distinct()
