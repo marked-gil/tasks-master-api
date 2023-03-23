@@ -1,40 +1,39 @@
 from rest_framework import serializers
 from django.db.models import Q
 from django.contrib.auth.models import User
-from shared_tasks.models import SharedTask
 from tasks.models import Task
 from .models import Comment
 
 
 class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
     """
-    Custom serializer for task field
+    Custom serializer to filter tasks owned or shared with the user
     [Idea taken from StackOverflow (See 'Credits' in README.md)]
     """
     def get_queryset(self):
         """ Retrieves filtered Task querysets """
         queryset = Task.objects.all()
         request = self.context.get('request', None)
-        tasks = SharedTask.objects.filter(
-            shared_to=request.user.id).values('task_id')
         return queryset.filter(
-            Q(owner=request.user) | Q(id__in=tasks)
+            Q(owner=request.user) | Q(shared_to__id=request.user.id)
         ).distinct()
 
 
 class ReplyToSlugRelatedSerializer(serializers.SlugRelatedField):
     """
-    Custom serializer for reply_to field
+    Custom serializer to filter comments owned by user, or comments with
+    tasks shared with, or owned by, the user.
     [Idea taken from StackOverflow (See 'Credits' in README.md)]
     """
     def get_queryset(self):
         """ Retrieves Comment filtered querysets """
         queryset = Comment.objects.all()
         request = self.context.get('request', None)
-        tasks = SharedTask.objects.filter(
-            shared_to=request.user.id).values('task_id')
+        task_ids = Task.objects.filter(
+            Q(shared_to__id=request.user.id) |
+            Q(owner__id=request.user.id)).values('id')
         return queryset.filter(
-            Q(owner=request.user) | Q(task__id__in=tasks)
+            Q(task__id__in=task_ids)
         ).distinct()
 
 
