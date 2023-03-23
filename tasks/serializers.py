@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from datetime import date, datetime
 from categories.models import Category
 from .models import Task
-from shared_tasks.models import SharedTask
 
 
 class CategorySlugSerializer(serializers.SlugRelatedField):

@@ -107,7 +107,7 @@ INSTALLED_APPS = [
     'profiles',
     'tasks',
     'categories',
-    'shared_tasks',
+    # 'shared_tasks',
     'comments',
 ]
 
