@@ -15,7 +15,7 @@ class SharedTask(models.Model):
         related_name='shared_tasks',
         on_delete=models.CASCADE
     )
-    shared_to = models.ManyToManyField(User, related_name='sharing')
+    shared_to = models.ManyToManyField(User, related_name='shared')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
 

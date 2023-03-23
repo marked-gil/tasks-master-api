@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.db.models.base import ObjectDoesNotExist
+from django.contrib.auth.models import User
 from datetime import date, datetime
 from categories.models import Category
 from .models import Task
@@ -27,7 +28,11 @@ class TaskSerializer(serializers.ModelSerializer):
     due_time = serializers.TimeField(format="%I:%M %p", required=False)
     progress = serializers.SerializerMethodField()
     is_shared = serializers.SerializerMethodField()
-    shared_task_id = serializers.SerializerMethodField()
+    shared_to = serializers.SlugRelatedField(
+        many=True,
+        slug_field='username',
+        queryset=User.objects.all()
+    )
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
 
@@ -49,23 +54,11 @@ class TaskSerializer(serializers.ModelSerializer):
         shared_task = SharedTask.objects.filter(task=obj)
         return bool(shared_task)
 
-    def get_shared_task_id(self, obj):
-        """
-        Gets the id of the shared task from SharedTask model
-        """
-        try:
-            shared_task = SharedTask.objects.get(task=obj)
-            shared_task_id = shared_task.id
-        except SharedTask.DoesNotExist:
-            return None
-        else:
-            return shared_task_id
-
     class Meta:
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
             'id', 'owner', 'profile_id', 'task_name', 'details', 'category',
-            'due_date', 'due_time', 'priority', 'progress', 'is_shared',
-            'shared_task_id', 'datetime_created', 'datetime_updated'
+            'due_date', 'due_time', 'priority', 'progress', 'shared_to',
+            'is_shared', 'datetime_created', 'datetime_updated'
         ]

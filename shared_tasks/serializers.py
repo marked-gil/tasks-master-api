@@ -23,11 +23,6 @@ class SharedTaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.SerializerMethodField()
-    shared_to = serializers.SlugRelatedField(
-        many=True,
-        slug_field='username',
-        queryset=User.objects.all()
-    )
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
 
