@@ -21,8 +21,8 @@ class TaskSlugRelatedSerializer(serializers.SlugRelatedField):
 
 class ReplyToSlugRelatedSerializer(serializers.SlugRelatedField):
     """
-    Custom serializer to filter comments owned by user, or comments with
-    tasks shared with, or owned by, the user.
+    Custom serializer to filter comments with tasks shared with, or
+    owned by, the user.
     [Idea taken from StackOverflow (See 'Credits' in README.md)]
     """
     def get_queryset(self):
@@ -32,9 +32,7 @@ class ReplyToSlugRelatedSerializer(serializers.SlugRelatedField):
         task_ids = Task.objects.filter(
             Q(shared_to__id=request.user.id) |
             Q(owner__id=request.user.id)).values('id')
-        return queryset.filter(
-            Q(task__id__in=task_ids)
-        ).distinct()
+        return queryset.filter(task__id__in=task_ids).distinct()
 
 
 class CommentSerializer(serializers.ModelSerializer):
