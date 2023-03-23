@@ -22,6 +22,7 @@ class CategorySlugSerializer(serializers.SlugRelatedField):
 class TaskSerializer(serializers.ModelSerializer):
     """ Serializer for Task Model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     category = CategorySlugSerializer(slug_field='category_name')
     due_date = serializers.DateField(format="%d %B %Y")
@@ -35,6 +36,11 @@ class TaskSerializer(serializers.ModelSerializer):
     )
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
+
+    def get_is_owner(self, obj):
+        """ """
+        user = self.context['request'].user
+        return obj.owner == user
 
     def get_progress(self, obj):
         """ Sets the value of progress field """
@@ -56,7 +62,7 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
-            'id', 'owner', 'profile_id', 'task_name', 'details', 'category',
-            'due_date', 'due_time', 'priority', 'progress', 'shared_to',
-            'is_shared', 'datetime_created', 'datetime_updated'
+            'id', 'owner', 'is_owner', 'profile_id', 'task_name', 'details',
+            'category', 'due_date', 'due_time', 'priority', 'progress',
+            'shared_to', 'is_shared', 'datetime_created', 'datetime_updated'
         ]
