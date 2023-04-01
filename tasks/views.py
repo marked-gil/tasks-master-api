@@ -1,5 +1,6 @@
 from rest_framework import generics, filters
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
@@ -11,6 +12,7 @@ class TaskList(generics.ListCreateAPIView):
     """
     Returns a list of current user's tasks, and creates new task
     """
+    permission_classes = IsAuthenticated
     serializer_class = TaskSerializer
     filter_backends = [
         filters.SearchFilter,

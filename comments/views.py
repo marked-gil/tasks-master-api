@@ -4,6 +4,7 @@ from django.db.models import Q
 from tasks.models import Task
 from .models import Comment
 from .serializers import CommentSerializer
+from rest_framework.permissions import IsAuthenticated
 from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
 
 
@@ -11,6 +12,7 @@ class CommentList(generics.ListCreateAPIView):
     """
     Returns a list of comments, and creates new comments
     """
+    permission_classes = IsAuthenticated
     serializer_class = CommentSerializer
 
     def get_queryset(self):

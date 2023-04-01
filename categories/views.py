@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from .models import Category
+from rest_framework.permissions import IsAuthenticated
 from tasks_master_api.permissions import IsOwner
 from .serializers import CategorySerializer
 
@@ -9,6 +10,7 @@ class CategoryList(generics.ListCreateAPIView):
     """
     Returns a list of all categories, and creates new category
     """
+    permission_classes = IsAuthenticated
     serializer_class = CategorySerializer
 
     def get_queryset(self):
