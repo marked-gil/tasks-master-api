@@ -24,9 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
