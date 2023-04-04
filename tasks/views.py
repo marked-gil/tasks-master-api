@@ -12,7 +12,7 @@ class TaskList(generics.ListCreateAPIView):
     """
     Returns a list of current user's tasks, and creates new task
     """
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     serializer_class = TaskSerializer
     filter_backends = [
         filters.SearchFilter,

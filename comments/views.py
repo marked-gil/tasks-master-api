@@ -12,7 +12,7 @@ class CommentList(generics.ListCreateAPIView):
     """
     Returns a list of comments, and creates new comments
     """
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
 
     def get_queryset(self):

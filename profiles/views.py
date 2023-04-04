@@ -11,7 +11,7 @@ class ProfileList(generics.ListAPIView):
     """
     Returns a list of all profiles
     """
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 

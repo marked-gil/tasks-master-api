@@ -10,7 +10,7 @@ class CategoryList(generics.ListCreateAPIView):
     """
     Returns a list of all categories, and creates new category
     """
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated]
     serializer_class = CategorySerializer
 
     def get_queryset(self):
