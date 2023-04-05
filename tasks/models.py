@@ -10,7 +10,8 @@ class Task(models.Model):
     """
     PROGRESS = [
         ("overdue", "Overdue"),
-        ("todo", "Todo")
+        ("to-do", "To-do"),
+        ("completed", "Completed")
     ]
 
     PRIORITY = [
@@ -30,7 +31,7 @@ class Task(models.Model):
     due_date = models.DateField(blank=False)
     due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
-                                default="todo")
+                                default="to-do")
     priority = models.CharField(max_length=10, choices=PRIORITY, default=1)
     shared_to = models.ManyToManyField(User, related_name='sharing')
     datetime_created = models.DateTimeField(auto_now_add=True)
