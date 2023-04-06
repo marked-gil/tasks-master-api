@@ -32,6 +32,8 @@ class Task(models.Model):
     due_time = models.TimeField(blank=True, null=True)
     progress = models.CharField(max_length=15, choices=PROGRESS,
                                 default="to-do")
+    is_completed = models.BooleanField(default=False, blank=False,
+                                       editable=True)
     priority = models.CharField(max_length=10, choices=PRIORITY, default=1)
     shared_to = models.ManyToManyField(User, related_name='sharing')
     datetime_created = models.DateTimeField(auto_now_add=True)
