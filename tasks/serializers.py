@@ -43,14 +43,17 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_progress(self, obj):
         """ Sets the value of progress field """
-        if obj.due_time is None:
-            time_ok = True
+        if obj.is_completed is True:
+            obj.progress = 'completed'
         else:
-            time_ok = datetime.now().time() < obj.due_time
+            if obj.due_time is None:
+                time_ok = True
+            else:
+                time_ok = datetime.now().time() < obj.due_time
 
-        if obj.due_date < date.today() or obj.due_date == date.today() \
-                and not time_ok:
-            obj.progress = 'overdue'
+            if obj.due_date < date.today() or obj.due_date == date.today() \
+                    and not time_ok:
+                obj.progress = 'overdue'
         return obj.progress
 
     def get_is_shared(self, obj):
@@ -63,5 +66,6 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'task_name', 'details',
             'category', 'due_date', 'due_time', 'priority', 'progress',
-            'shared_to', 'is_shared', 'datetime_created', 'datetime_updated'
+            'is_completed', 'shared_to', 'is_shared', 'datetime_created',
+            'datetime_updated'
         ]
