@@ -27,6 +27,7 @@ class TaskSerializer(serializers.ModelSerializer):
     due_date = serializers.DateField(format="%d %B %Y")
     due_time = serializers.TimeField(format="%I:%M %p", required=False)
     progress = serializers.SerializerMethodField()
+    datetime_completed = serializers.SerializerMethodField()
     is_shared = serializers.SerializerMethodField()
     shared_to = serializers.SlugRelatedField(
         many=True,
@@ -37,7 +38,7 @@ class TaskSerializer(serializers.ModelSerializer):
     datetime_updated = serializers.DateTimeField(read_only=True)
 
     def get_is_owner(self, obj):
-        """ """
+        """ Shows if the current user is the owner of the task """
         user = self.context['request'].user
         return obj.owner == user
 
@@ -56,6 +57,12 @@ class TaskSerializer(serializers.ModelSerializer):
                 obj.progress = 'overdue'
         return obj.progress
 
+    def get_datetime_completed(self, obj):
+        """ Sets the datetime task is completed """
+        if obj.is_completed is True:
+            obj.datetime_completed = datetime.now()
+            return obj.datetime_completed
+
     def get_is_shared(self, obj):
         """ Shows if the task is shared or not """
         return obj.shared_to.exists()
@@ -66,6 +73,6 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'task_name', 'details',
             'category', 'due_date', 'due_time', 'priority', 'progress',
-            'is_completed', 'shared_to', 'is_shared', 'datetime_created',
-            'datetime_updated'
+            'is_completed', 'datetime_completed', 'shared_to', 'is_shared',
+            'datetime_created', 'datetime_updated'
         ]
