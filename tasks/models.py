@@ -57,6 +57,10 @@ class Task(models.Model):
         self.old_is_completed = self.is_completed
 
     def save(self, *args, **kwargs):
+        """
+        Sets datetime value indatetime_completed set when is_completed is True
+        (Idea taken from Edureka Community [See 'Credits' Section in ReadMe])
+        """
         if self.is_completed and self.old_is_completed != self.is_completed:
             self.datetime_completed = datetime.now()
         super(Task, self).save(*args, **kwargs)
