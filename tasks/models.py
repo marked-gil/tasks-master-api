@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import User
 from categories.models import Category
 import uuid
@@ -30,8 +31,7 @@ class Task(models.Model):
                                  default=None)
     due_date = models.DateField(blank=False)
     due_time = models.TimeField(blank=True, null=True)
-    progress = models.CharField(max_length=15, choices=PROGRESS,
-                                default="to-do")
+    progress = models.CharField(max_length=15, choices=PROGRESS)
     is_completed = models.BooleanField(default=False, blank=False,
                                        editable=True)
     datetime_completed = models.DateTimeField(blank=True, null=True)
@@ -51,3 +51,12 @@ class Task(models.Model):
         Returns the task name of the Task's instance
         """
         return self.task_name
+
+    def __init__(self, *args, **kwargs):
+        super(Task, self).__init__(*args, **kwargs)
+        self.old_is_completed = self.is_completed
+
+    def save(self, *args, **kwargs):
+        if self.is_completed and self.old_is_completed != self.is_completed:
+            self.datetime_completed = datetime.now()
+        super(Task, self).save(*args, **kwargs)
