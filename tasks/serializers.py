@@ -26,7 +26,6 @@ class TaskSerializer(serializers.ModelSerializer):
     category = CategorySlugSerializer(slug_field='category_name')
     due_date = serializers.DateField(format="%d %B %Y")
     due_time = serializers.TimeField(format="%I:%M %p", allow_null=True)
-    progress = serializers.SerializerMethodField()
     datetime_completed = serializers.SerializerMethodField()
     is_shared = serializers.SerializerMethodField()
     shared_to = serializers.SlugRelatedField(
@@ -41,21 +40,6 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Shows if the current user is the owner of the task """
         user = self.context['request'].user
         return obj.owner == user
-
-    def get_progress(self, obj):
-        """ Sets the value of progress field """
-        if obj.is_completed is True:
-            obj.progress = 'completed'
-        else:
-            if obj.due_time is None:
-                time_ok = True
-            else:
-                time_ok = datetime.now().time() < obj.due_time
-
-            if obj.due_date < date.today() or obj.due_date == date.today() \
-                    and not time_ok:
-                obj.progress = 'overdue'
-        return obj.progress
 
     def get_datetime_completed(self, obj):
         """ Sets the datetime task is completed """
