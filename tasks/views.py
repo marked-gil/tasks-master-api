@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from .models import Task
 from .serializers import TaskSerializer
+from datetime import date
 
 
 class TaskList(generics.ListCreateAPIView):
@@ -30,6 +31,19 @@ class TaskList(generics.ListCreateAPIView):
         Returns all tasks created by the logged-in user
         """
         user = self.request.user
+        user_all_tasks = Task.objects.filter(
+            Q(owner=user) | Q(shared_to__id=user.id)
+        )
+
+        for task in user_all_tasks:
+            if task.progress != 'completed':
+                if task.due_date < date.today():
+                    task.progress = 'overdue'
+                    task.save()
+                elif task.due_date >= date.today():
+                    task.progress = 'to-do'
+                    task.save()
+
         return Task.objects.filter(
             Q(owner=user) | Q(shared_to__id=user.id)
         )
