@@ -64,8 +64,11 @@ class Task(models.Model):
         """
         if self.is_completed and self.old_is_completed != self.is_completed:
             self.datetime_completed = datetime.now()
-        if self.due_date >= date.today():
-            self.progress = 'to-do'
-        elif self.due_date < date.today():
-            self.progress = 'overdue'
+        if self.is_completed:
+            self.progress = 'completed'
+        elif self.progress != 'completed' or not self.is_completed:
+            if self.due_date >= date.today():
+                self.progress = 'to-do'
+            elif self.due_date < date.today():
+                self.progress = 'overdue'
         super(Task, self).save(*args, **kwargs)
