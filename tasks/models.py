@@ -53,7 +53,9 @@ class Task(models.Model):
         return self.task_name
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """
+        Initializes the object's attributes
+        """
         super(Task, self).__init__(*args, **kwargs)
         self.old_is_completed = self.is_completed
 
