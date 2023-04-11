@@ -16,10 +16,3 @@ class CategorySerializer(serializers.ModelSerializer):
             'id', 'owner', 'category_name', 'description', 'datetime_created',
             'datetime_updated'
         ]
-        validators = [
-            UniqueTogetherValidator(
-                queryset=Category.objects.all(),
-                fields=['owner', 'category_name'],
-                message="You already have this category."
-            )
-        ]
