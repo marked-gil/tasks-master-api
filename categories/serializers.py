@@ -18,10 +18,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         """ Validate that category and owner are unique together """
+        message = "You already have this category."
         user = self.context["request"].user
         category = attrs['category_name']
 
         if Category.objects.filter(owner=user, category_name=category
                                    ).exists():
-            raise serializers.ValidationError("You already have this category.")
+            raise serializers.ValidationError(message)
         return attrs
