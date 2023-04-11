@@ -44,7 +44,7 @@ class Profile(models.Model):
         (Idea to use @receiver decorator taken from Stackoverflow.
         See Credits in README.md)
         """
-        DEFAULT_CATEGORIES = ["At Home", "At Work"]
+        DEFAULT_CATEGORIES = ["at home", "at work"]
 
         if created:
             Profile.objects.create(owner=instance)
