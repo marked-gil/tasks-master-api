@@ -25,7 +25,7 @@ class TaskSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     category = CategorySlugSerializer(slug_field='category_name')
     progress = serializers.ReadOnlyField()
-    due_date = serializers.DateField(format="%d %B %Y")
+    due_date = serializers.DateField(format="%Y-%m-%d")
     due_time = serializers.TimeField(format="%I:%M %p", allow_null=True)
     is_shared = serializers.SerializerMethodField()
     shared_to = serializers.SlugRelatedField(
