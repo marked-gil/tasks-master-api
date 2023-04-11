@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from datetime import date, datetime
 from categories.models import Category
 from .models import Task
+from profiles.models import Profile
 
 
 class CategorySlugSerializer(serializers.SlugRelatedField):
@@ -49,8 +50,8 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id', 'task_name', 'details',
-            'category', 'due_date', 'due_time', 'priority', 'progress',
-            'is_completed', 'datetime_completed', 'shared_to', 'is_shared',
-            'datetime_created', 'datetime_updated'
+            'id', 'owner', 'is_owner', 'profile_id',
+            'task_name', 'details', 'category', 'due_date', 'due_time',
+            'priority', 'progress', 'is_completed', 'datetime_completed',
+            'shared_to', 'is_shared', 'datetime_created', 'datetime_updated'
         ]

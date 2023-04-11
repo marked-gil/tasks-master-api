@@ -20,7 +20,7 @@ class Category(models.Model):
         in the database
         """
         ordering = ['-datetime_updated']
-        unique_together = [['owner', 'category_name']]
+        unique_together = ['owner', 'category_name']
 
     def __str__(self):
         """
