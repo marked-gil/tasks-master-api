@@ -81,5 +81,5 @@ class Task(models.Model):
             elif self.due_date < date.today():
                 self.progress = 'overdue'
             elif self.due_date > date.today():
-                self.progress = 'todo'
+                self.progress = 'to-do'
         super(Task, self).save(*args, **kwargs)
