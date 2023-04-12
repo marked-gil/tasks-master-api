@@ -31,9 +31,13 @@ class TaskList(generics.ListCreateAPIView):
         Returns all tasks created by the logged-in user
         """
         user = self.request.user
-        user_all_tasks = Task.objects.filter(
-            Q(owner=user) | Q(shared_to__id=user.id)
-        )
+        if user.is_authenticated:
+            user_all_tasks = Task.objects.filter(
+                Q(owner=user) | Q(shared_to__id=user.id)
+            )
+        else:
+            user_all_tasks = Task.objects.none()
+        return user_all_tasks
 
         for task in user_all_tasks:
             if task.progress != 'completed':
