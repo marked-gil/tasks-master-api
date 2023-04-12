@@ -34,6 +34,7 @@ class TaskList(generics.ListCreateAPIView):
         user_all_tasks = Task.objects.filter(
             Q(owner=user) | Q(shared_to__id=user.id)
         )
+
         for task in user_all_tasks:
             if task.progress != 'completed':
                 if task.due_date == date.today():
@@ -43,7 +44,6 @@ class TaskList(generics.ListCreateAPIView):
                         else:
                             task.progress = 'overdue'
                     else:
-                        print(type(task.due_time))
                         task.progress = 'to-do'
                 elif task.due_date < date.today():
                     task.progress = 'overdue'
