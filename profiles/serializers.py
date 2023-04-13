@@ -15,8 +15,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         """
         model = Profile
         fields = [
-            'id', 'user_id', 'owner', 'first_name', 'last_name', 'email', 'image',
-            'datetime_created', 'datetime_updated'
+            'id', 'user_id', 'owner', 'first_name', 'last_name', 'email',
+            'image', 'datetime_created', 'datetime_updated'
         ]
 
     def validate_image(self, photo):
