@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, filters
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -14,6 +14,10 @@ class ProfileList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = ['=owner__username']
 
 
 class ProfileDetails(generics.RetrieveUpdateDestroyAPIView):
