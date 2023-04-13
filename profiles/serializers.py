@@ -4,6 +4,7 @@ from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
     """ Serializer for Profile Model """
+    user_id = serializers.ReadOnlyField(source='owner.id')
     owner = serializers.ReadOnlyField(source='owner.username')
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
@@ -14,7 +15,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         """
         model = Profile
         fields = [
-            'id', 'owner', 'first_name', 'last_name', 'email', 'image',
+            'id', 'user_id', 'owner', 'first_name', 'last_name', 'email', 'image',
             'datetime_created', 'datetime_updated'
         ]
 
