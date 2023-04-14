@@ -21,7 +21,8 @@ class TaskList(generics.ListCreateAPIView):
         DjangoFilterBackend
     ]
     filterset_fields = [
-        'due_date', 'priority', 'progress', 'category', 'shared_to'
+        'due_date', 'priority', 'progress', 'category', 'shared_to',
+        'is_shared'
     ]
     ordering_fields = ['due_date', 'due_time', 'priority']
     search_fields = ['category__category_name', 'task_name']
