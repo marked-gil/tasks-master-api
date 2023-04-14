@@ -34,7 +34,7 @@ class TaskList(generics.ListCreateAPIView):
         if user.is_authenticated:
             user_all_tasks = Task.objects.filter(
                 Q(owner=user) | Q(shared_to__id=user.id)
-            )
+            ).distinct()
         else:
             user_all_tasks = Task.objects.none()
         return user_all_tasks
@@ -57,7 +57,7 @@ class TaskList(generics.ListCreateAPIView):
 
         return Task.objects.filter(
             Q(owner=user) | Q(shared_to__id=user.id)
-        )
+        ).distinct()
 
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
@@ -77,4 +77,4 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
         user = self.request.user
         return Task.objects.filter(
             Q(owner=user) | Q(shared_to__id=user.id)
-        )
+        ).distinct()
