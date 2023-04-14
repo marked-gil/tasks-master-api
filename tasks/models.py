@@ -34,6 +34,7 @@ class Task(models.Model):
     progress = models.CharField(max_length=15, choices=PROGRESS)
     is_completed = models.BooleanField(default=False, blank=False,
                                        editable=True)
+    is_shared = models.BooleanField(default=False, blank=False)
     datetime_completed = models.DateTimeField(blank=True, null=True)
     priority = models.CharField(max_length=10, choices=PRIORITY, default=1)
     shared_to = models.ManyToManyField(User, related_name='sharing')

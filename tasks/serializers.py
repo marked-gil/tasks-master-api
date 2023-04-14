@@ -27,7 +27,6 @@ class TaskSerializer(serializers.ModelSerializer):
     category = CategorySlugSerializer(slug_field='category_name')
     progress = serializers.ReadOnlyField()
     due_time = serializers.TimeField(format="%H:%M", allow_null=True)
-    is_shared = serializers.SerializerMethodField()
     shared_to = serializers.SlugRelatedField(
         many=True,
         slug_field='username',
@@ -40,10 +39,6 @@ class TaskSerializer(serializers.ModelSerializer):
         """ Shows if the current user is the owner of the task """
         user = self.context['request'].user
         return obj.owner == user
-
-    def get_is_shared(self, obj):
-        """ Shows if the task is shared or not """
-        return obj.shared_to.exists()
 
     class Meta:
         """ Specifies the fields returned by the API """
