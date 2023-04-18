@@ -362,6 +362,8 @@ The following are the User Stories that guided the creation of this API:
 ## **API Endpoints**
 
 ## **Database Schema**
+The database for Tasks Master API contains four (4) custom models, namely Profile, Task, Category, and Comment; and also the default User model. The schema displayed below shows the relationship among these models.
+![Database Design](docs/database-design.png)
 
 ## Features Left for Future Implementation
 
@@ -426,6 +428,7 @@ The following are the User Stories that guided the creation of this API:
     As I do not have much data stored in the database yet, I just deleted the old database and created a new one. After having done that, I did the migration again. This time it worked. I got the idea to solve it from this link: https://forum.djangoproject.com/t/django-db-migrations-exceptions-inconsistenmigrationhistory/14129
 
 ## Bugs Left To Fix
+After thorough testing, there are no bugs that were noted by the developer of the site.
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
