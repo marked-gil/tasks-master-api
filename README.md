@@ -1,13 +1,13 @@
 # Tasks Master API
-This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [Here](http://tasks-master.herokuapp.com/) for the live **Tasks Master** React application.
+This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API.
 
-**Tasks Master**
-[View Live Website.]
+Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React Application website.
 
 ## TABLE OF CONTENTS
 
 
 ## **Development Goal:**
+The main goal of this API is to allow the React application entitled [**Tasks Master**](http://tasks-master.herokuapp.com/) to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
 
 ## **The Use of Agile Methodology**
 
@@ -363,11 +363,57 @@ The following are the User Stories that guided the creation of this API:
 
 ## **Database Schema**
 
-## Features
+## Features Left for Future Implementation
+
+* **User Story:** [**Notification Model**](https://github.com/marked-gil/tasks-master-api/issues/19)
+    > As a developer, I can save notifications in the database so I can use and display them in the front end.
+
+    Implementation: 
+    * Create ‘notifications’ app
+    * Add the ‘notifications’ app in settings.py’s INSTALLED_APPS
+    * Create the Notification model with fields, such as id, message, sender, receiver, is_seen, task, comment, etc.
+    * Register the Notification model in the admin.py
+
+* **User Story:** [**NotificationSerializer**](https://github.com/marked-gil/tasks-master-api/issues/26)
+    > As a developer, I can serialize the data from the Notification model so they can be outputted in the API as JSON objects.
+
+    Implementation: 
+    * Create serializers.py inside the ‘notifications’ directory
+    * Create NotificationSerializer with fields, such as id, message, sender, receiver, is_seen, task, comment, etc.
+
+* **User Story:** [**API Notification List**](https://github.com/marked-gil/tasks-master-api/issues/52)
+    > As a developer, I can return a list of all notifications when requested from the API.
+
+    Implementation: 
+    * Return a list of all notifications from the API as a response to a GET request.
+
+* **User Story:** [**API Notification Details**](https://github.com/marked-gil/tasks-master-api/issues/53)
+    > As a developer, I can return the details of a notification when requested in the API.
+
+    Implementation: 
+    *  Return the details of a notification as a response to a GET request.
+
+* **User Story:** [**Create Notification for New SharedTask in the API**](https://github.com/marked-gil/tasks-master-api/issues/54)
+    > As a developer, I can automatically create notification for the new shared task and save them in a database.
+
+    Implementation: 
+    * Automatically create a notification for a new shared task.
+
+* **User Story:** [**Create Notification for Overdue Tasks in the API**](https://github.com/marked-gil/tasks-master-api/issues/55)
+    > As a developer, I can automatically create a notification for an overdue task and save it in a database.
+
+    Implementation: 
+    *  Automatically create a notification for an overdue task.
+
+* **User Story:** [**Create Notification for a New Comment in the API**](https://github.com/marked-gil/tasks-master-api/issues/56)
+    > As a developer, I can automatically create a notification for a new comment to a shared task.
+
+    Implementation: 
+    * Automatically create a notification for a new comment.
+
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-## Features Left for Future Implementation
 
 ## Fixed Bugs
 
