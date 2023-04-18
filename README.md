@@ -360,6 +360,9 @@ The following are the User Stories that guided the creation of this API:
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
 ## **API Endpoints**
+Displayed below are the API endpoints and their corresponding methods that can be performed.
+![API endpoints](docs/api-endpoints.png)
+
 
 ## **Database Schema**
 The database for Tasks Master API contains four (4) custom models, namely Profile, Task, Category, and Comment; and also the default User model. The schema displayed below shows the relationship among these models.
