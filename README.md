@@ -368,6 +368,21 @@ Displayed below are the API endpoints and their corresponding methods that can b
 The database for Tasks Master API contains four (4) custom models, namely Profile, Task, Category, and Comment; and also the default User model. The schema displayed below shows the relationship among these models.
 ![Database Design](docs/database-design.png)
 
+
+## **Security Features**
+To ensure the security of data submitted by users and saved in the database, specific restrictions are set to retrieve, view, edit, add and delete data.
+
+|Endpoint   | Permission  | Description |
+| --------- | ----------- | ----------- |
+| profiles/ | IsAuthenticated | Only aunthenticated/logged in users can view the list of profiles |
+| profiles/<str:id> | IsOwner, IsAuthenticatedReadOnly | Only the owner can update and delete their profile, while authenticated users may view other profiles |
+| tasks/	| IsAuthenticated | Only authenticated owners can retrieve and create tasks |
+| tasks/<str:id> | IsOwner, IsAuthenticatedReadOnly | Only owners can update and delete their tasks, while other authenticated users may possibly view others' tasks |
+| categories/ | IsAuthenticated | Authenticated users can view and create categories |
+| categories/<str:id> | IsOwner | Only owners can update and delete their categories |
+| comments/ | IsAuthenticated | Only authenticated users can view and create comments |
+| comments/<str:id> | IsOwner, IsAuthenticated | Only owners can update and delete their comments |
+
 ## Features Left for Future Implementation
 
 * **User Story:** [**Notification Model**](https://github.com/marked-gil/tasks-master-api/issues/19)
