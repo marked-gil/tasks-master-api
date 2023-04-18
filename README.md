@@ -22,7 +22,8 @@ This is the API for that serves the **Tasks Master** React application. This API
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-### **SKELETON**
+### **API Endpoints**
+
 #### **Database Schema**
 
 ## Features
@@ -105,10 +106,6 @@ This project uses the following tools:
 * [Stackoverflow](https://stackoverflow.com/questions/29642390/how-to-filter-serializers-slugrelatedfield-queryset-using-model-field) - Modifying SlugRelatedField to return a filtered queryset
 * [Code Institute's drf-api repo](https://github.com/Code-Institute-Solutions/drf-api/blob/c637122d1a559139cabf1d39b0a3281814091d79/posts/serializers.py) - Code for the image validation
 * [Edureka! Community](https://www.edureka.co/community/74191/how-update-date-automatically-after-value-change-in-django) - How to update a date automatically when a value changes in Django
-
-### Content
-
-### Media
 
 
 ### References
