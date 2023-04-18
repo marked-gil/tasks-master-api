@@ -1,37 +1,24 @@
-# Tasks Master
-![Am I Responsive Screenshot]()     
+# Tasks Master API
+This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [Here](http://tasks-master.herokuapp.com/) for the live **Tasks Master** React application.
+
 **Tasks Master**
 [View Live Website.]
 
 ## TABLE OF CONTENTS
 
-## User Experience Design (UXD)
 
-### **STRATEGY**
-#### **Main Goal:**
+### **Development Goal:**
 
-#### **Target Audience:**
-
-#### **The Use of Agile Methodology**
+### **The Use of Agile Methodology**
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-#### **EPICS:**
-
-#### **User Stories:**
-Iteration 1:    
-
-Iteration 2:    
-
-Iteration 3:    
-
-Iteration 4:    
+### **EPICS:**
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-### **SCOPE**
 
-#### **Planned Features**
+### **User Stories**
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
