@@ -30,6 +30,7 @@ This is the API for that serves the **Tasks Master** React application. This API
 ### **User Stories**
 
 The following are the User Stories that guided the creation of this API:
+
 * **User Story:** [**Setup Django and Cloudinary for API**](https://github.com/marked-gil/tasks-master-api/issue)
     > As a developer, I want Django and Cloudinary installed, so that I can create the initial Django app and connect it to Cloudinary as storage.
 
@@ -44,6 +45,7 @@ The following are the User Stories that guided the creation of this API:
     Implementation:
     * Create an env.py in the top directory
     * Place all sensitive data inside the env.py file, e.g. ‘cloudinary URL’, ‘Django Secret Key’
+
 * **User Story:** [**Profile Model**](https://github.com/marked-gil/tasks-master-api/issues/14) 
     > As a developer, I can automatically create a profile for each signed-up user so that they can add other personal information such as name, email, and profile picture.
 
@@ -52,6 +54,7 @@ The following are the User Stories that guided the creation of this API:
     * Add the ‘profiles’ app in setting.py’s INSTALLED_APPS
     * Create a Profile model with fields, such as id, owner, first_name, last_name, image, email, datetime_created, datetime_updated, etc.
     *Register the Profile model in the admin.py
+
 * **User Story:** [**Task Model**](https://github.com/marked-gil/tasks-master-api/issues/15)
     > As a developer, I can save in the database the tasks created by users so they can be returned on request.     
 
@@ -60,6 +63,7 @@ The following are the User Stories that guided the creation of this API:
     * Add the ‘tasks’ app in setting.py’s INSTALLED_APPS
     * Create a Task Model with fields, such as id, owner, task_name, details, datetime_created, datetime_updated, due_date, due_time, category, priority, progress, etc.
     * Register the Task Model in the admin.py
+
 * **User Story:** [**Category Model**](https://github.com/marked-gil/tasks-master-api/issues/17)
     > As a developer, I can save categories to the database so tasks are categorized.       
 
@@ -68,6 +72,7 @@ The following are the User Stories that guided the creation of this API:
     * Add the ‘categories’ app in settings.py’s INTALLED_APPS
     * Create a Category model with fields, such as owner, category_name, description, datetime_created, datetime_updated, etc.
     * Register the Category model in the admin.py
+
 * **User Story:** [**Comment Model**](https://github.com/marked-gil/tasks-master-api/issues/18)
     > As a developer, I can allow users to create comments on tasks and save them in the database.
 
@@ -76,24 +81,280 @@ The following are the User Stories that guided the creation of this API:
     * Add the ‘comments’ app in settings.py’s INSTALLED_APPS
     * Create a Comment model with fields, such as id, owner, content, datetime_created, datetime_updated, task, reply_to, is_reply_to_comment, etc.
     * Register the Comment model in the admin.py
+
 * **User Story:** [**Setup Django REST Framework**](https://github.com/marked-gil/tasks-master-api/issues/20)   
     > As a developer, I can use the Django REST Framework to build the API so it will be quick, reliable, and secure.
 
     Implementation:
     * Install Django REST Framework - djangorestframework
     * Add the ‘rest_framework’ in settings.py’s INSTALLED_APPS
-* **User Story:** 
+
+* **User Story:** [**ProfileSerializer**](https://github.com/marked-gil/tasks-master-api/issues/21)
+    > As a developer, I can serialize the data from the Profile model so they can be outputted in the API as JSON objects.  
+
     Implementation:
-* **User Story:** 
+    * Create serializers.py inside the ‘profiles’ directory
+    * Create ProfileSerializer with fields, such as id, owner, first_name, last_name, image, email, datetime_created, datetime_updated, etc.
+
+* **User Story:** [**TaskSerializer**](https://github.com/marked-gil/tasks-master-api/issues/22)    
+    > As a developer, I can serialize the data from the Task model so they can be outputted in the API as JSON objects. 
+
     Implementation:
-* **User Story:** 
+    * Create serializers.py inside the ‘tasks’ directory
+    * Create TaskSerializer with fields, such as id, owner, task_name, description, description, date_created, date_updated, due_date, due_time, category, priority, progress, etc
+
+* **User Story:** [**CategorySerializer**](https://github.com/marked-gil/tasks-master-api/issues/24)    
+    > As a developer, I can serialize the data from the Category Model so they can be outputted in the API as JSON objects.
+
     Implementation:
-* **User Story:** 
+    * Create serializers.py inside the ‘categories’ directory
+    * Create CategorySerializer with fields, such as owner, category_name, description, datetime_created, datetime_updated, etc.
+
+* **User Story:** [**CommentSerializer**](https://github.com/marked-gil/tasks-master-api/issues/25)
+    > As a developer, I can serialize the data from the Comment model so they can be outputted in the API as JSON objects.
+
     Implementation:
-* **User Story:** 
+    * Create serializers.py inside the ‘comments’ directory
+    * Create CommentSerializer with fields, such as id, owner, content, datetime_created, datetime_updated, task, reply_to, is_reply_to_comment, etc.
+
+* **User Story:** [**API Profile List**](https://github.com/marked-gil/tasks-master-api/issues/27)
+    > As a developer, I can return a list of all profiles when requested in the API.
+
     Implementation:
-* **User Story:** 
+    * Set up ProfileList view
+    * Set up the URL path to retrieve the list of profiles
+    * Return a list of all profiles from the API as a response to a GET request
+
+* **User Story:** [**API Profile Details**](https://github.com/marked-gil/tasks-master-api/issues/28)
+    > As a developer, I can return the profile details of a user when requested in the API.
+
     Implementation:
+    * Set up ProfileDetails view
+    * Set up the URL path to retrieve the user's profile details
+    * Return the user’s profile details as a response to a GET request for a specific user id.
+
+* **User Story:** [**Create Profile in API**](https://github.com/marked-gil/tasks-master-api/issues/29)
+    > As a developer, I can allow the automatic creation of a profile for newly created/signed-up users.
+    
+    Implementation: 
+    *  Automatically create a profile for a user that signs up to the site.
+
+* **User Story:** [**Update Profile in API**](https://github.com/marked-gil/tasks-master-api/issues/30)
+    > As a developer, I can allow a user to update their image, email, first name, and last name.
+
+    Implementation: 
+    * Allow user to update their image, first name, last name, and email address.
+    * Prevent the editing of usernames.
+    * Add a validation check for the uploaded image to prevent uploading of a large image that is beyond the set parameter.
+
+* **User Story:** [**Delete Profile/Account in the API**](https://github.com/marked-gil/tasks-master-api/issues/31)
+    > As a developer, I can allow a user to delete their profile from the database when they delete their account.
+
+    Implementation:
+    * Allow deletion of the user and user’s profile from the database when a request is sent to the API.
+    * Only allow the logged-in user to delete their own account/profile.
+
+* **User Story:** [**API Task List**]()
+    > As a developer, I can return a list of all tasks when requested in the API.
+
+    Implementation:
+    * Set up TaskList view
+    * Set up the URL path to retrieve the list of tasks
+    * Return a list of all tasks from the API as a response to a GET request.
+
+* **User Story:** [**API Task Details**](https://github.com/marked-gil/tasks-master-)
+    > As a developer, I can return the details of a task when requested in the API.
+    
+    Implementation:
+    * Set up TaskDetails view
+    * Set up the URL path to retrieve the user's task details
+    * Return the details of a task as a response to a GET request.
+
+* **User Story:** [Create Task in API ](https://github.com/marked-gil/tasks-master-api/issues/34)
+    > As a developer, I can allow the creation of new tasks and save them in the database.
+
+    Implementation:
+    * Allow users to create and save a new task in the database.
+
+* **User Story:** [**Update Task in API**](https://github.com/marked-gil/tasks-master-api/issues/35)
+    > As a developer, I can allow users to update their created tasks so they can amend mistakes or make changes as they see fit.
+    
+    Implementation:
+    *  Allow users to make changes to their task’s name, details, category, due date and time, and priority setting.
+
+* **User Story:** [**Delete Task in API**](https://github.com/marked-gil/tasks-master-api/issues/36)
+    > As a developer, I can allow users to delete tasks.
+    
+    Implementation:
+    *  Allow users to delete their created tasks.
+
+* **User Story:** [**Update the Users Sharing a Task in API**](https://github.com/marked-gil/tasks-master-api/issues/40)
+    > As a developer, I can allow the owner of the shared task to change who the task is shared with.
+
+    Implementation:
+    * Allow owners to change who their shared task is shared with by adding or removing users from the task.
+
+* **User Story:** [**API Category List]**(https://github.com/marked-gil/tasks-master-api/issues/42)
+    > As a developer, I can return a list of all categories when requested in the API.
+    
+    Implementation:
+    * Set up CategoryList view
+    * Set up the URL path to retrieve the list of categories
+    * Return a list of all categories from the API as a response to a GET request.
+* **User Story:** [**API Category Details**](https://github.com/marked-gil/tasks-master-api/issues/43)
+    > As a developer, I can return the details of a task when requested in the API.
+
+    Implementation:
+    * Set up CategoryDetails view
+    * Set up the URL path to retrieve a category's details
+    * Return the details of a category as a response to a GET request.
+
+* **User Story:** [**Create Category in API**](https://github.com/marked-gil/tasks-master-api/issues/44)
+    > As a developer, I can allow users to create categories for their tasks.
+
+    Implementation:
+    * Allow users to create new task categories.
+
+* **User Story:** [**Update Category in API**](https://github.com/marked-gil/tasks-master-api/issues/45)
+    > As a developer, I can users edit the category’s name and description.
+    
+    Implementation:
+    * Allow users to edit the category’s name and description.
+
+* **User Story:** [**Delete Category in API**](https://github.com/marked-gil/tasks-master-api/issues/46)
+    > As a developer, I can users delete categories.
+    
+    Implementation:
+    * Allow users to delete categories.
+
+* **User Story:** [**API Comment List**](https://github.com/marked-gil/tasks-master-api/issues/47)
+    > As a developer, I can return a list of all comments when requested in the API.
+    
+    Implementation:
+    * Set up CommentList view
+    * Set up the URL path to retrieve the list of comments
+    * Return a list of all comments from the API as a response to a GET request
+
+* **User Story:** [**API Comment Details**](https://github.com/marked-gil/tasks-master-api/issues/48)
+    > As a developer, I can return the details of a comment when requested in the API.
+
+    Implementation:
+    * Set up CommentDetails view
+    * Set up the URL path to retrieve the comment's details
+    * Return the details of a comment as a response to a GET request.
+* **User Story:** [**Create Comment in API**](https://github.com/marked-gil/tasks-master-api/issues/49)
+    > As a developer, I can allow logged-in users to add comments to their tasks or shared task.
+
+    Implementation:
+    * Allow logged-in users to create a comment on their task or shared task.
+
+* **User Story:** [**Update Comment in API**](https://github.com/marked-gil/tasks-master-api/issues/50)
+    > As a developer, I can allow logged-in users to edit their comments.
+    
+    Implementation:
+    * Allow logged-in users to edit their comment messages.
+
+* **User Story:** [**Delete Comment in API**](https://github.com/marked-gil/tasks-master-api/issues/51)
+    > As a developer, I can allow logged-in users to delete their comment and their associated comments created as a reply to them.
+    
+    Implementation:
+    * Allow logged-in user to delete their comment.
+    * Automatically delete all children comments (replies) to a deleted parent comment.
+
+* **User Story:** [**Restrict Access and Creation of API Data to Authenticated Users Only**](https://github.com/marked-gil/tasks-master-api/issues/57)
+    > As a developer, I want only authenticated (logged-in) users to view and/or create data.
+    
+    Implementation:
+    * Add login and logout buttons on the browsable API using login and logout views
+    * Allow only logged-in users to view and create API data.
+    * Install dj-rest-auth library.
+    * Install djangorestframework-simplejwt to add JWT authentication functionality.
+
+* **User Story:** [**Restrict Retrieval of Data to their Owners and/or Permitted Users Only in the API**](https://github.com/marked-gil/tasks-master-api/issues/58)
+    > As a developer, I can only allow authenticated owners and permitted users to retrieve their data.
+
+    Implementation: 
+    * Allow only logged-in owners to retrieve their tasks.
+    * Allow only logged-in owners and permitted users to retrieve shared tasks.
+    * Allow only logged-in owners to retrieve their category.
+    * Allow only logged-in owners and permitted users to retrieve their comments.
+
+* **User Story:** [**Restrict Editing of Data to the Owner of the Data in the API**](https://github.com/marked-gil/tasks-master-api/issues/59)
+    > As a developer, I can allow the logged-in user who owns or created the data to modify it.
+    
+    Implementation:
+    * Allow only the logged-in user who owns the profile to modify it.
+    * Allow only the logged-in user who created the task to modify it.
+    * Allow only the logged-in user who shared the task to edit the users sharing the task.
+    * Allow only the logged-in user who created the category to modify it.
+    * Allow only the logged-in user who created the comment to modify it.
+
+* **User Story:** [**Restrict Deletion of Data to Authenticated Owners Only in the API**](https://github.com/marked-gil/tasks-master-api/issues/60)
+    > As a developer, I can only allow authenticated users to delete their own tasks, shared tasks, categories, and comments.
+    
+    Implementation:
+    * Allow only logged-in users to delete their own tasks.
+    * Allow only logged-in. owners to delete their shared tasks.
+    * Allow only logged-in users to delete their created categories.
+    * Allow only logged-in users to delete their own comments.
+    
+* **User Story:** [**API Root Route**](https://github.com/marked-gil/tasks-master-api/issues/61)
+    > As a developer, I want to add a ‘Welcome’ message to users accessing the default endpoint of the API.
+
+    Implementation:
+    *  At the root route, display the message “You have reached the API for Tasks Master.”
+
+* **User Story:** [**API Pagination**](https://github.com/marked-gil/tasks-master-api/issues/62)
+    > As a developer, I want to limit the number or size of data returned per request to efficiently manage the request load.
+
+    Implementation:
+    * In the project’s settings.py, add and set the DEFAULT_PAGINATION_CLASS
+    * Set the PAGE_SIZE to 15.
+    
+* **User Story:** [**Connect Database and Heroku**](https://github.com/marked-gil/tasks-master-api/issues/63)
+    > As a developer, I want to create the production database and connect it to Heroku.
+    
+    Implementation:
+    * Create database instance in ElephantSQL.com
+    * Create Heroku app
+    * Add the DB URL to Heroku app’s config vars
+    * Install dj_database_url==0.5.0 psycopg2, which is needed to connect to external database
+
+* **User Story:** [**Preparing for API Deployment**](https://github.com/marked-gil/tasks-master-api/issues/64)
+    > As a developer, I want the project to be ready for deployment to Heroku.
+
+    Implementation:
+    * Set default renderer to JSON
+    * Set date & time format
+    * Install gunicorn django-cors-headers
+    * Create Procfile
+    * Set up CORS_ALLOWED_ORIGINS & CORS_ALLOWED_CREDENTIALS
+    * Set JWT_AUTH_SAMESITE to None
+
+* **User Story:** [**Automatic Creation of Default Categories in the API**](https://github.com/marked-gil/tasks-master-api/issues/65)
+    > As a developer, I can automatically create default categories for users on sign-up.
+    
+    Implementation:
+    * Create 2 default categories: ‘At Home’ and ‘At Work’
+    * Automatically create the 2 default categories when the profile is automatically created for a signed-up user.
+
+* **User Story:** [**Allow User Registration**](https://github.com/marked-gil/tasks-master-api/issues/66)
+    > As a developer, I can allow user registration using dj-rest-auth library.
+    
+    Implementation:
+    * Install 'dj-rest-auth[with_social]'
+    * Add the following to INSTALLED_APPS: django.contrib.sites, allauth, allauth.account, allauth.socialaccount and dj_rest_auth.registration
+    * "SITE_ID = 1" in settings.py
+    * Add dj_rest_auth.registration urls
+
+* **User Story:** [**Filter Task List in the API**](https://github.com/marked-gil/tasks-master-api/issues/67)
+    > As a developer, I can allow filtering of tasks by ordering, searching, and using filterset.
+    
+    Implementation:
+    * Install django_filters and add it to INSTALLED_APPS
+    * Add OrderingFilter and fields, such as due_date, due_time, priority
+    * Add SearchFilter and fields, such as category, and task name
+    * Add filterset_fields, such as due_date, priority, progress, category
 
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
