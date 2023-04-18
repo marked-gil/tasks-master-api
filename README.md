@@ -14,6 +14,15 @@ This is the API for that serves the **Tasks Master** React application. This API
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
 ### **EPICS:**
+1. [Initial Project Setup](https://github.com/marked-gil/tasks-master-api/issues/1)
+2. [Data Models](https://github.com/marked-gil/tasks-master-api/issues/2)
+3. [Model Serializers](https://github.com/marked-gil/tasks-master-api/issues/3)
+4. [Profiles](https://github.com/marked-gil/tasks-master-api/issues/4)
+5. [Tasks](https://github.com/marked-gil/tasks-master-api/issues/5)
+6. [Categories](https://github.com/marked-gil/tasks-master-api/issues/7)
+7. [Comments](https://github.com/marked-gil/tasks-master-api/issues/8)
+8. [Authentication and Authorization](https://github.com/marked-gil/tasks-master-api/issues/10)
+9. [API Deployment](https://github.com/marked-gil/tasks-master-api/issues/11)
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
