@@ -7,9 +7,9 @@ This is the API for that serves the **Tasks Master** React application. This API
 ## TABLE OF CONTENTS
 
 
-### **Development Goal:**
+## **Development Goal:**
 
-### **The Use of Agile Methodology**
+## **The Use of Agile Methodology**
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
@@ -29,11 +29,78 @@ This is the API for that serves the **Tasks Master** React application. This API
 
 ### **User Stories**
 
+The following are the User Stories that guided the creation of this API:
+* **User Story:** [**Setup Django and Cloudinary for API**](https://github.com/marked-gil/tasks-master-api/issue)
+    > As a developer, I want Django and Cloudinary installed, so that I can create the initial Django app and connect it to Cloudinary as storage.
+
+    Implementation:      
+    * Install Django, django-cloudinary-storage, and Pillows libraries
+    * Configure settings.py to include the Cloudinary storage by importing it as an environment variable.
+    * Add ‘cloudinary_storage’ and ‘cloudinary’ in setting.py’s INSTALLED_APPS
+
+* **User Story:** [**Initial Setup of the API's Environment**](https://github.com/marked-gil/tasks-master-api/issues/13)    
+    > As a developer, I want to create environment variables so sensitive information or data can be protected.
+
+    Implementation:
+    * Create an env.py in the top directory
+    * Place all sensitive data inside the env.py file, e.g. ‘cloudinary URL’, ‘Django Secret Key’
+* **User Story:** [**Profile Model**](https://github.com/marked-gil/tasks-master-api/issues/14) 
+    > As a developer, I can automatically create a profile for each signed-up user so that they can add other personal information such as name, email, and profile picture.
+
+    Implementation: 
+    * Create the ‘profiles’ app
+    * Add the ‘profiles’ app in setting.py’s INSTALLED_APPS
+    * Create a Profile model with fields, such as id, owner, first_name, last_name, image, email, datetime_created, datetime_updated, etc.
+    *Register the Profile model in the admin.py
+* **User Story:** [**Task Model**](https://github.com/marked-gil/tasks-master-api/issues/15)
+    > As a developer, I can save in the database the tasks created by users so they can be returned on request.     
+
+    Implementation: 
+    * Create ‘tasks’ app
+    * Add the ‘tasks’ app in setting.py’s INSTALLED_APPS
+    * Create a Task Model with fields, such as id, owner, task_name, details, datetime_created, datetime_updated, due_date, due_time, category, priority, progress, etc.
+    * Register the Task Model in the admin.py
+* **User Story:** [**Category Model**](https://github.com/marked-gil/tasks-master-api/issues/17)
+    > As a developer, I can save categories to the database so tasks are categorized.       
+
+    Implementation: 
+    * Create ‘categories’ app
+    * Add the ‘categories’ app in settings.py’s INTALLED_APPS
+    * Create a Category model with fields, such as owner, category_name, description, datetime_created, datetime_updated, etc.
+    * Register the Category model in the admin.py
+* **User Story:** [**Comment Model**](https://github.com/marked-gil/tasks-master-api/issues/18)
+    > As a developer, I can allow users to create comments on tasks and save them in the database.
+
+    Implementation: 
+    * Create ‘comments’ app
+    * Add the ‘comments’ app in settings.py’s INSTALLED_APPS
+    * Create a Comment model with fields, such as id, owner, content, datetime_created, datetime_updated, task, reply_to, is_reply_to_comment, etc.
+    * Register the Comment model in the admin.py
+* **User Story:** [**Setup Django REST Framework**](https://github.com/marked-gil/tasks-master-api/issues/20)   
+    > As a developer, I can use the Django REST Framework to build the API so it will be quick, reliable, and secure.
+
+    Implementation:
+    * Install Django REST Framework - djangorestframework
+    * Add the ‘rest_framework’ in settings.py’s INSTALLED_APPS
+* **User Story:** 
+    Implementation:
+* **User Story:** 
+    Implementation:
+* **User Story:** 
+    Implementation:
+* **User Story:** 
+    Implementation:
+* **User Story:** 
+    Implementation:
+* **User Story:** 
+    Implementation:
+
+
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
-### **API Endpoints**
+## **API Endpoints**
 
-#### **Database Schema**
+## **Database Schema**
 
 ## Features
 
