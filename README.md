@@ -31,7 +31,7 @@ The main goal of this API is to allow the React application entitled [**Tasks Ma
 
 The following are the User Stories that guided the creation of this API:
 
-* **User Story:** [**Setup Django and Cloudinary for API**](https://github.com/marked-gil/tasks-master-api/issue)
+* **User Story:** [**Setup Django and Cloudinary for API**](https://github.com/marked-gil/tasks-master-api/issues/12)
     > As a developer, I want Django and Cloudinary installed, so that I can create the initial Django app and connect it to Cloudinary as storage.
 
     Implementation:      
@@ -154,7 +154,7 @@ The following are the User Stories that guided the creation of this API:
     * Allow deletion of the user and user’s profile from the database when a request is sent to the API.
     * Only allow the logged-in user to delete their own account/profile.
 
-* **User Story:** [**API Task List**]()
+* **User Story:** [**API Task List**](https://github.com/marked-gil/tasks-master-api/issues/32)
     > As a developer, I can return a list of all tasks when requested in the API.
 
     Implementation:
@@ -162,7 +162,7 @@ The following are the User Stories that guided the creation of this API:
     * Set up the URL path to retrieve the list of tasks
     * Return a list of all tasks from the API as a response to a GET request.
 
-* **User Story:** [**API Task Details**](https://github.com/marked-gil/tasks-master-)
+* **User Story:** [**API Task Details**](https://github.com/marked-gil/tasks-master-api/issues/33)
     > As a developer, I can return the details of a task when requested in the API.
     
     Implementation:
@@ -384,6 +384,8 @@ To ensure the security of data submitted by users and saved in the database, spe
 | comments/<str:id> | IsOwner, IsAuthenticated | Only owners can update and delete their comments |
 
 ## Features Left for Future Implementation
+
+The following user stories are left for future implementation:
 
 * **User Story:** [**Notification Model**](https://github.com/marked-gil/tasks-master-api/issues/19)
     > As a developer, I can save notifications in the database so I can use and display them in the front end.
