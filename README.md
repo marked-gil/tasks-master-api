@@ -453,6 +453,13 @@ After thorough testing, there are no bugs that were noted by the developer of th
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
 ## Testing
+Following are the test cases for the manual testing done on this project's use stories:
+![Manual Testing 1](docs/manual-api-testing/manual-api-testing-1.png)
+![Manual Testing 2](docs/manual-api-testing/manual-api-testing-2.png)
+![Manual Testing 3](docs/manual-api-testing/manual-api-testing-3.png)
+![Manual Testing 4](docs/manual-api-testing/manual-api-testing-4.png)
+![Manual Testing 5](docs/manual-api-testing/manual-api-testing-5.png)
+![Manual Testing 6](docs/manual-api-testing/manual-api-testing-6.png)
 
 ## Deployment
 
