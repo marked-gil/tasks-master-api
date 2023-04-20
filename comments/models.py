@@ -20,7 +20,7 @@ class Comment(models.Model):
 
     class Meta:
         """ Arranges comments based on their update """
-        ordering = ['datetime_created']
+        ordering = ['-datetime_created']
 
     def __str__(self):
         """
