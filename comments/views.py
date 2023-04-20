@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from tasks.models import Task
 from .models import Comment
@@ -14,6 +15,12 @@ class CommentList(generics.ListCreateAPIView):
     """
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_fields = [
+        'task'
+    ]
 
     def get_queryset(self):
         """ Returns a single comment """
