@@ -24,7 +24,7 @@ class Task(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     task_name = models.CharField(
-        max_length=250, blank=False, editable=True, unique_for_date="due_date"
+        max_length=150, blank=False, editable=True, unique_for_date="due_date"
     )
     details = models.TextField(max_length=1000, blank=True, editable=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
