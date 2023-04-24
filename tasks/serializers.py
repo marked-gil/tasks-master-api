@@ -36,7 +36,7 @@ class TaskSerializer(serializers.ModelSerializer):
     datetime_updated = serializers.DateTimeField(read_only=True)
 
     def get_is_owner(self, obj):
-        """ Shows if the current user is the owner of the task """
+        """ Identifies if the current user is the owner of the task """
         user = self.context['request'].user
         return obj.owner == user
 

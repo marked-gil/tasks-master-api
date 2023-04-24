@@ -38,6 +38,7 @@ class ReplyToSlugRelatedSerializer(serializers.SlugRelatedField):
 class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
     task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.ReadOnlyField(source='task.id')
     content = serializers.CharField(
@@ -57,6 +58,11 @@ class CommentSerializer(serializers.ModelSerializer):
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
 
+    def get_is_owner(self, obj):
+        """ Identifies if current user is the owner of the comment """
+        user = self.context['request'].user
+        return obj.owner == user
+
     def get_is_reply_to_comment(self, obj):
         """ Boolean value for a comment replied to another comment """
         return bool(obj.reply_to)
@@ -65,7 +71,7 @@ class CommentSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Comment
         fields = [
-            'id', 'owner', 'task', 'task_id', 'content', 'reply_to',
+            'id', 'owner', 'is_owner', 'task', 'task_id', 'content', 'reply_to',
             'reply_to_id', 'is_reply_to_comment', 'datetime_created',
             'datetime_updated'
         ]
