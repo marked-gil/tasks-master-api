@@ -6,8 +6,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     """ Serializer for Profile Model """
     user_id = serializers.ReadOnlyField(source='owner.id')
     owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
+
+    def get_is_owner(self, obj):
+        """ Identifies if the current user is the owner of the profile """
+        user = self.context['request'].user
+        return obj.owner == user
 
     class Meta:
         """
@@ -15,8 +21,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         """
         model = Profile
         fields = [
-            'id', 'user_id', 'owner', 'first_name', 'last_name', 'email',
-            'image', 'datetime_created', 'datetime_updated'
+            'id', 'user_id', 'owner', 'is_owner', 'first_name', 'last_name',
+            'email', 'image', 'datetime_created', 'datetime_updated'
         ]
 
     def validate_image(self, photo):
