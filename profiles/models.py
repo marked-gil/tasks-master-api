@@ -19,7 +19,7 @@ class Profile(models.Model):
     )
     image = models.ImageField(
         upload_to='images/',
-        default='../default_profile_l102wx'
+        default='../profile-avatar_omfvlb'
     )
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_updated = models.DateTimeField(auto_now=True)
