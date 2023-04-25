@@ -517,6 +517,7 @@ This project uses the following tools:
 
 * [Stackoverflow](https://stackoverflow.com/questions/65908861/how-to-automatically-create-new-profile-once-a-new-user-is-created-in-django) - How to automatically create a profile for registered users using @receiver decorator and Django signal
 * [Stackoverflow](https://stackoverflow.com/questions/29642390/how-to-filter-serializers-slugrelatedfield-queryset-using-model-field) - Modifying SlugRelatedField to return a filtered queryset
+* [Stackoverflow](https://stackoverflow.com/questions/22621060/django-rest-framework-unique-together-validation-on-serializers) - How to serialize unique_together validation in the Category model
 * [Code Institute's drf-api repo](https://github.com/Code-Institute-Solutions/drf-api/blob/c637122d1a559139cabf1d39b0a3281814091d79/posts/serializers.py) - Code for the image validation
 * [Edureka! Community](https://www.edureka.co/community/74191/how-update-date-automatically-after-value-change-in-django) - How to update a date automatically when a value changes in Django
 
