@@ -42,7 +42,7 @@ class TaskSerializer(serializers.ModelSerializer):
     category = CategorySlugSerializer(slug_field='category_name')
     progress = serializers.ReadOnlyField()
     due_time = serializers.TimeField(format="%H:%M", allow_null=True)
-    shared_to = UserProfileSerializer(many=True, read_only=True)
+    shared_to = UserProfileSerializer(many=True)
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
 
