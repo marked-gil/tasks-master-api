@@ -20,20 +20,6 @@ class CategorySlugSerializer(serializers.SlugRelatedField):
         return queryset.filter(owner=request.user)
 
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    """ Serializer for the User Profile"""
-    username = serializers.SerializerMethodField()
-    image = serializers.ImageField(source='profile.image', use_url=True)
-
-    def get_username(self, obj):
-        """ Gets the username of the profile owner """
-        return obj.username
-
-    class Meta:
-        model = Profile
-        fields = ['username', 'image', 'first_name', 'last_name', 'email']
-
-
 class TaskSerializer(serializers.ModelSerializer):
     """ Serializer for Task Model """
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -42,7 +28,11 @@ class TaskSerializer(serializers.ModelSerializer):
     category = CategorySlugSerializer(slug_field='category_name')
     progress = serializers.ReadOnlyField()
     due_time = serializers.TimeField(format="%H:%M", allow_null=True)
-    shared_to = UserProfileSerializer(many=True)
+    shared_to = serializers.SlugRelatedField(
+        many=True,
+        slug_field='username',
+        queryset=User.objects.all()
+    )
     datetime_created = serializers.DateTimeField(read_only=True)
     datetime_updated = serializers.DateTimeField(read_only=True)
 
