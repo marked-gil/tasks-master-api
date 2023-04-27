@@ -39,6 +39,7 @@ class CommentSerializer(serializers.ModelSerializer):
     """ Serializer for Comment model """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    profile_image = serializers.SerializerMethodField()
     task = TaskSlugRelatedSerializer(slug_field='task_name')
     task_id = serializers.ReadOnlyField(source='task.id')
     content = serializers.CharField(
@@ -63,6 +64,13 @@ class CommentSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         return obj.owner == user
 
+    def get_profile_image(self, obj):
+        """ Retrieves the task owner's profile image URL """
+        request = self.context.get('request')
+        if obj.owner.profile.image:
+            return request.build_absolute_uri(obj.owner.profile.image.url)
+        return None
+
     def get_is_reply_to_comment(self, obj):
         """ Boolean value for a comment replied to another comment """
         return bool(obj.reply_to)
@@ -71,7 +79,7 @@ class CommentSerializer(serializers.ModelSerializer):
         """ Specifies the fields returned by the API """
         model = Comment
         fields = [
-            'id', 'owner', 'is_owner', 'task', 'task_id', 'content',
-            'reply_to', 'reply_to_id', 'is_reply_to_comment',
+            'id', 'owner', 'is_owner', 'profile_image', 'task', 'task_id',
+            'content', 'reply_to', 'reply_to_id', 'is_reply_to_comment',
             'datetime_created', 'datetime_updated'
         ]
