@@ -25,6 +25,7 @@ class TaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_image = serializers.SerializerMethodField()
     category = CategorySlugSerializer(slug_field='category_name')
     progress = serializers.ReadOnlyField()
     due_time = serializers.TimeField(format="%H:%M", allow_null=True)
@@ -41,11 +42,18 @@ class TaskSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         return obj.owner == user
 
+    def get_profile_image(self, obj):
+        """ Retrieves the task owner's profile image URL """
+        request = self.context.get('request')
+        if obj.owner.profile.image:
+            return request.build_absolute_uri(obj.owner.profile.image.url)
+        return None
+
     class Meta:
         """ Specifies the fields returned by the API """
         model = Task
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id',
+            'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'task_name', 'details', 'category', 'due_date', 'due_time',
             'priority', 'progress', 'is_completed', 'datetime_completed',
             'shared_to', 'is_shared', 'datetime_created', 'datetime_updated'
