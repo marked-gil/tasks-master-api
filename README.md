@@ -8,6 +8,21 @@ Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React 
 * [**The Use of Agile Methodology**](#the-use-of-agile-methodology)
     * [EPICS](#epics)
     * [User Stories](#user-stories)
+* [**API Endpoints**](#api-endpoints)
+* [**Database Schema**](#database-schema)
+* [**Security Features**](#security-features)
+* [**Features Left for Future Implementation**](#features-left-for-future-implementation)   
+* [**Fixed Bugs**](#fixed-bugs)
+* [**Bugs Left to Fix**](#bugs-left-to-fix)
+* [**Testing**](#testing)
+* [**Python Linter Validator**](#python-linting-result)
+* [**Deployment**](#deployment)
+    * [Version Control](#version-control)
+    * [Heroku Development](#heroku-deployment)
+    * [Cloning from Github](#cloning-from-github)
+* [**Technologies**](#credits)
+* [**References**](#references)
+* [**Acknowledgment**](#acknowledgment**)
 
 ## Development Goal:
 The main goal of this API is to allow the React application, entitled [**Tasks Master**](http://tasks-master.herokuapp.com/), to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
@@ -480,9 +495,38 @@ This Python code passed through the CI Python Linter. No errors were found.
 * `git push` — to upload the local repository to the remote repository, such as GitHub
 
 ### **Heroku Deployment**
+This website is deployed through Heroku. The following were the deployment steps:
 
+1. I logged in to my Heroku account.
+2. Then, I was redirected to this URL https://dashboard.heroku.com/apps. Inside, I clicked the 'New' button which was a dropdown menu. Between the two (2) options it showed, I clicked on 'Create new app'.
+3. Then, on the 'Create New App' page, I typed in my 'app name' and 'region' on their respected input fields. Then I clicked the 'create app' button that is sitting at the bottom of the aforementioned fields. This then redirected me to my new app's page in Heroku.
+4. On my new app's page, there is a row of links, which includes: Overview, Resources, Deploy, Metrics, Activity, Access, and Settings. I first went to 'Settings' by clicking its link.
+5. Inside the 'Settings', I clicked on 'Reveal Config Vars' and added the variables and corresponding values that are also found in my env.py file, then clicked on the 'add' button beside them.
+
+    > The following are the variables in the Heroku Config Vars:        
+    > * ALLOWED_HOST
+    > * CLIENT_ORIGIN
+    > * CLIENT_ORIGIN_DEV
+    > * CLOUDINARY_URL
+    > * DATABASE_URL
+    > * DISABLE_COLLECTSTATIC
+    > * HEROKU_POSTGRESQL_TEAL_URL
+    > * SECRET_KEY
+
+6. Then, on the 'Buildpacks' section, I clicked the 'Add buildpack' button and added heroku/python.
+7. Then, I went to the 'Deploy' link and clicked on Github as the Deployment Method.
+8. Below the Deployment Method section is the Connect to Github section. Here I searched for the name of my new app on Github using the search input field provided. When the name of the repository was displayed, I clicked on the 'connect' button.
 
 ### **Cloning from GitHub**
+To clone the repository for this site, do the following steps:
+
+1. Go to this URL: https://github.com/marked-gil/tasks-master-api
+2. Inside the repository, look for the button labelled as 'Code', which is along the rows with other buttons such as 'Go to file' and 'Add file'.
+3. Click on the 'Code' button, and a small popup box will show up with a top heading of 'Clone'.
+4. In the popup box, click on the 'HTTPS' link and copy the URL just below it.
+5. Then, go to your computer's terminal and type `git clone https://github.com/marked-gil/tasks-master-api.git`
+6. A copy of the repository is now saved on your computer.
+
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
@@ -514,7 +558,6 @@ This project uses the following tools:
 * `GitHub` - stores the source code repository for this website
 * [Diffchecker](https://www.diffchecker.com/#) - used when comparing codes tested in another IDE to the codes in gitpod     
 * [Grammarly](https://www.grammarly.com/) - used to check the grammar of the contents in this project   
-* Web browsers (Google Chrome, Firefox, Safari, Microsoft Edge) 
 * For Testing and Validation:   
     * [CI Python Linter](https://pep8ci.herokuapp.com/) 
 
@@ -532,6 +575,11 @@ This project uses the following tools:
 ### References
 * Main References:
     * [Code Institute](https://codeinstitute.net/ie/)
-    * [Django Documentation](https://docs.djangoproject.com/en/3.2/)    
+    * [Django Documentation](https://docs.djangoproject.com/en/3.2/)   
+    * [Django Rest Framework](https://www.django-rest-framework.org/)
+    * [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/faq.html) 
 
 ## Acknowledgment
+* **Daisy McGirr**, my mentor at Code Institute, for being a great help.
+* **Kyle Dacutan**, my lovely wife, for the ceaseless support
+* **My children**, Zsyrish and Marko, for inspiring me to do well
