@@ -28,6 +28,7 @@ Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React 
 The main goal of this API is to allow the React application, entitled [**Tasks Master**](http://tasks-master.herokuapp.com/), to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
 
 ## The Use of Agile Methodology
+This project was created using the Agile methodology. For this API, there were fifty (50) user stories that were created. Forty-three (43) of those were implemented, while the seven (7) are left for future implementation. To see the Kanban board, click this [link](https://github.com/users/marked-gil/projects/17).
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
@@ -211,7 +212,7 @@ The following are the User Stories that guided the creation of this API:
     Implementation:
     * Allow owners to change who their shared task is shared with by adding or removing users from the task.
 
-* **User Story:** [**API Category List]**(https://github.com/marked-gil/tasks-master-api/issues/42)
+* **User Story:** [**API Category List**](https://github.com/marked-gil/tasks-master-api/issues/42)
     > As a developer, I can return a list of all categories when requested in the API.
     
     Implementation:
