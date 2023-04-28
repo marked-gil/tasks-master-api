@@ -1,15 +1,18 @@
 # Tasks Master API
-This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API.
+This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API. (Note: As this is a protected API, authentication is required to view any of its data.)
 
 Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React Application website.
 
 ## TABLE OF CONTENTS
+* [**Development Goal**](#development-goal)
+* [**The Use of Agile Methodology**](#the-use-of-agile-methodology)
+    * [EPICS](#epics)
+    * [User Stories](#user-stories)
 
+## Development Goal:
+The main goal of this API is to allow the React application, entitled [**Tasks Master**](http://tasks-master.herokuapp.com/), to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
 
-## **Development Goal:**
-The main goal of this API is to allow the React application entitled [**Tasks Master**](http://tasks-master.herokuapp.com/) to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
-
-## **The Use of Agile Methodology**
+## The Use of Agile Methodology
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
@@ -25,7 +28,6 @@ The main goal of this API is to allow the React application entitled [**Tasks Ma
 9. [API Deployment](https://github.com/marked-gil/tasks-master-api/issues/11)
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
-
 
 ### **User Stories**
 
@@ -460,6 +462,11 @@ Following are the test cases for the manual testing done on this project's use s
 ![Manual Testing 4](docs/manual-api-testing/manual-api-testing-4.png)
 ![Manual Testing 5](docs/manual-api-testing/manual-api-testing-5.png)
 ![Manual Testing 6](docs/manual-api-testing/manual-api-testing-6.png)
+
+## Python Linting Result
+This Python code passed through the CI Python Linter. No errors were found.
+![Python Linter result](docs/pylinter-result.png)
+
 
 ## Deployment
 
