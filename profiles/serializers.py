@@ -34,12 +34,12 @@ class ProfileSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Image too large! Only 2 MB is allowed.'
             )
-        if photo.image.width > 2000:
+        if photo.image.width > 4096:
             raise serializers.ValidationError(
-                'Image width & height should be less than 2000px'
+                'Image width & height should be less than 4096px'
             )
-        if photo.image.height > 2000:
+        if photo.image.height > 4096:
             raise serializers.ValidationError(
-                'Image width & height should be less than 2000px'
+                'Image width & height should be less than 4096px'
             )
         return photo
