@@ -395,7 +395,7 @@ To ensure the security of data submitted by users and saved in the database, spe
 | profiles/ | IsAuthenticated | Only aunthenticated/logged in users can view the list of profiles |
 | profiles/<str:id> | IsOwner, IsAuthenticatedReadOnly | Only the owner can update and delete their profile, while authenticated users may view other profiles |
 | tasks/	| IsAuthenticated | Only authenticated owners can retrieve and create tasks |
-| tasks/<str:id> | IsOwner, IsAuthenticatedReadOnly | Only owners can update and delete their tasks, while other authenticated users may possibly view others' tasks |
+| tasks/<str:id> | IsOwner, IsSharingTask | Only owners and authenticated users sharing the task can view, update and delete the task |
 | categories/ | IsAuthenticated | Authenticated users can view and create categories |
 | categories/<str:id> | IsOwner | Only owners can update and delete their categories |
 | comments/ | IsAuthenticated | Only authenticated users can view and create comments |
