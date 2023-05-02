@@ -1,7 +1,7 @@
 from rest_framework import generics, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly, IsSharingTask
+from tasks_master_api.permissions import IsOwner, IsSharingTask
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from .models import Task
