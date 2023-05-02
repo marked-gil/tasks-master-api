@@ -1,7 +1,7 @@
 from rest_framework import generics, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly
+from tasks_master_api.permissions import IsOwner, IsAuthenticatedReadOnly, IsSharingTask
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from .models import Task
@@ -70,7 +70,8 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
     Retrieves, updates, and deletes a single Task instance
     """
     serializer_class = TaskSerializer
-    permission_classes = [IsOwner | IsAuthenticatedReadOnly]
+    permission_classes = [IsOwner | IsSharingTask]
+
     lookup_url_kwarg = 'id'
 
     def get_queryset(self):

@@ -1,6 +1,12 @@
 from rest_framework import permissions
 
 
+class IsSharingTask(permissions.BasePermission):
+    """ Allow users sharing a task to modify it """
+    def has_object_permission(self, request, view, obj):
+        return request.user in obj.shared_to.all()
+
+
 class IsAuthenticatedReadOnly(permissions.BasePermission):
     """ Read-only permission for authenticated users """
     def has_permission(self, request, view):
