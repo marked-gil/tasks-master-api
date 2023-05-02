@@ -1,7 +1,7 @@
 # Tasks Master API
-This is the API for that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API. (Note: As this is a protected API, authentication is required to view any of its data.)
+This is the API that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API. (Note: As this is a protected API, authentication is required to view any of its data.)
 
-Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React Application website.
+Click [**Tasks Master**](https://tasks-master.herokuapp.com/) to view live React Application website.
 
 ## TABLE OF CONTENTS
 * [**Development Goal**](#development-goal)
@@ -28,7 +28,7 @@ Click [**Tasks Master**](http://tasks-master.herokuapp.com/) to view live React 
 The main goal of this API is to allow the React application, entitled [**Tasks Master**](http://tasks-master.herokuapp.com/), to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
 
 ## The Use of Agile Methodology
-This project was created using the Agile methodology. For this API, there were fifty (50) user stories that were created. Forty-three (43) of those were implemented, while the seven (7) are left for future implementation. To see the Kanban board, click this [link](https://github.com/users/marked-gil/projects/17).
+This project was created using the Agile methodology. For this API, there were fifty (50) user stories that were created. Forty-three (43) of those were implemented, while seven (7) are left for future implementation. To see the Kanban board, click this [link](https://github.com/users/marked-gil/projects/17).
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
@@ -500,9 +500,9 @@ This website is deployed through Heroku. The following were the deployment steps
 
 1. I logged in to my Heroku account.
 2. Then, I was redirected to this URL https://dashboard.heroku.com/apps. Inside, I clicked the 'New' button which was a dropdown menu. Between the two (2) options it showed, I clicked on 'Create new app'.
-3. Then, on the 'Create New App' page, I typed in my 'app name' and 'region' on their respected input fields. Then I clicked the 'create app' button that is sitting at the bottom of the aforementioned fields. This then redirected me to my new app's page in Heroku.
+3. Then, on the 'Create New App' page, I typed in my 'app name' and 'region' on their respective input fields. Then I clicked the 'create app' button that is sitting at the bottom of the aforementioned fields. This then redirected me to my new app's page in Heroku.
 4. On my new app's page, there is a row of links, which includes: Overview, Resources, Deploy, Metrics, Activity, Access, and Settings. I first went to 'Settings' by clicking its link.
-5. Inside the 'Settings', I clicked on 'Reveal Config Vars' and added the variables and corresponding values that are also found in my env.py file, then clicked on the 'add' button beside them.
+5. Inside 'Settings', I clicked on 'Reveal Config Vars' and added the variables and corresponding values that are also found in my env.py file, then I clicked the 'add' button beside them.
 
     > The following are the variables in the Heroku Config Vars:        
     > * ALLOWED_HOST
