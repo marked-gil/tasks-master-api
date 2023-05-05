@@ -6,7 +6,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 from .models import Task
 from .serializers import TaskSerializer
-from datetime import date, datetime
+from datetime import date, datetime, time
+import pytz
 
 
 class TaskList(generics.ListCreateAPIView):
@@ -36,29 +37,29 @@ class TaskList(generics.ListCreateAPIView):
             user_all_tasks = Task.objects.filter(
                 Q(owner=user) | Q(shared_to__id=user.id)
             ).distinct()
+
+            # Automatically sets the progress of the task
+            for task in user_all_tasks:
+                time_now = datetime.now().time()
+                if task.progress != 'completed':
+                    if task.due_date == date.today():
+                        if task.due_time is not None:
+                            if task.due_time >= time(hour=time_now.hour,
+                                                     minute=time_now.
+                                                     minute, second=0):
+                                task.progress = 'to-do'
+                            else:
+                                task.progress = 'overdue'
+                        else:
+                            task.progress = 'to-do'
+                    elif task.due_date < date.today():
+                        task.progress = 'overdue'
+                    elif task.due_date > date.today():
+                        task.progress = 'to-do'
+                    task.save()
         else:
             user_all_tasks = Task.objects.none()
         return user_all_tasks
-
-        for task in user_all_tasks:
-            if task.progress != 'completed':
-                if task.due_date == date.today():
-                    if task.due_time is not None:
-                        if task.due_time >= datetime.now().time():
-                            task.progress = 'to-do'
-                        else:
-                            task.progress = 'overdue'
-                    else:
-                        task.progress = 'to-do'
-                elif task.due_date < date.today():
-                    task.progress = 'overdue'
-                elif task.due_date > date.today():
-                    task.progress = 'to-do'
-                task.save()
-
-        return Task.objects.filter(
-            Q(owner=user) | Q(shared_to__id=user.id)
-        ).distinct()
 
     def perform_create(self, serializer):
         """ Sets the current user as the owner """
@@ -75,8 +76,32 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = 'id'
 
     def get_queryset(self):
-        """ Returns a single task created by the current user """
+        """ Returns filtered queryset """
         user = self.request.user
-        return Task.objects.filter(
-            Q(owner=user) | Q(shared_to__id=user.id)
-        ).distinct()
+        if user.is_authenticated:
+            user_all_tasks = Task.objects.filter(
+                Q(owner=user) | Q(shared_to__id=user.id)
+            ).distinct()
+
+            # Automatically sets the progress of the task
+            for task in user_all_tasks:
+                time_now = datetime.now().time()
+                if task.progress != 'completed':
+                    if task.due_date == date.today():
+                        if task.due_time is not None:
+                            if task.due_time >= time(hour=time_now.hour,
+                                                     minute=time_now.
+                                                     minute, second=0):
+                                task.progress = 'to-do'
+                            else:
+                                task.progress = 'overdue'
+                        else:
+                            task.progress = 'to-do'
+                    elif task.due_date < date.today():
+                        task.progress = 'overdue'
+                    elif task.due_date > date.today():
+                        task.progress = 'to-do'
+                    task.save()
+        else:
+            user_all_tasks = Task.objects.none()
+        return user_all_tasks

@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime, date
+from datetime import datetime, date, time
 from django.contrib.auth.models import User
 from categories.models import Category
 import uuid
@@ -62,7 +62,8 @@ class Task(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Sets datetime value indatetime_completed set when is_completed is True
+        Automatically sets the progress value of the task, and sets the 
+        datetime when task is completed.
         (Idea taken from Edureka Community [See 'Credits' Section in ReadMe])
         """
         if self.is_completed and self.old_is_completed != self.is_completed:
@@ -71,9 +72,12 @@ class Task(models.Model):
         if self.is_completed:
             self.progress = 'completed'
         elif self.progress != 'completed' or not self.is_completed:
+            time_now = datetime.now().time()
             if self.due_date == date.today():
                 if self.due_time is not None:
-                    if self.due_time >= datetime.now().time():
+                    if self.due_time >= time(hour=time_now.hour,
+                                             minute=time_now.
+                                             minute, second=0):
                         self.progress = 'to-do'
                     else:
                         self.progress = 'overdue'
