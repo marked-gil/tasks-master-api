@@ -62,7 +62,7 @@ class Task(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Automatically sets the progress value of the task, and sets the 
+        Automatically sets the progress value of the task, and sets the
         datetime when task is completed.
         (Idea taken from Edureka Community [See 'Credits' Section in ReadMe])
         """
