@@ -28,7 +28,9 @@ Click [**Tasks Master**](https://tasks-master.herokuapp.com/) to view live React
 The main goal of this API is to allow the React application, entitled [**Tasks Master**](http://tasks-master.herokuapp.com/), to retrieve, post and update data related to users' profiles, tasks, task categories, and comments.
 
 ## The Use of Agile Methodology
-This project was created using the Agile methodology. For this API, there were fifty (50) user stories that were created. Forty-three (43) of those were implemented, while seven (7) are left for future implementation. To see the Kanban board, click this [link](https://github.com/users/marked-gil/projects/17).
+This project was created using the Agile methodology. For this API, there are fifty (50) user stories that created. Forty-three (43) of those are implemented, while seven (7) are left for future implementation. A story point (ranging from 2-8) and priority label (Must-Have, Should-Have, Could-Have, and Won’t-Have) were assigned to each User Story to guide the estimation of time needed for implementation and prioritize the most vital components of the site. Acceptance criteria were included in each User Story, which served as a basis for determining successful implementation.
+
+This API was completed in only 1 iteration. To see the Kanban board, click this [link](https://github.com/users/marked-gil/projects/17).
 
 [<ins>Back to Table of Contents</ins>](#table-of-contents)
 
