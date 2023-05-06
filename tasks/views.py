@@ -42,7 +42,8 @@ class TaskList(generics.ListCreateAPIView):
             for task in user_all_tasks:
                 datetime_now = datetime.now()
                 if task.progress != 'completed':
-                    if task.due_datetime >= datetime_now:
+                    if task.due_datetime.strftime('%Y-%m-%d %H:%M') >= \
+                            datetime_now.strftime('%Y-%m-%d %H:%M'):
                         task.progress = 'to-do'
                     else:
                         task.progress = 'overdue'
@@ -77,7 +78,8 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
             for task in user_all_tasks:
                 datetime_now = datetime.now()
                 if task.progress != 'completed':
-                    if task.due_datetime >= datetime_now:
+                    if task.due_datetime.strftime('%Y-%m-%d %H:%M') >= \
+                            datetime_now.strftime('%Y-%m-%d %H:%M'):
                         task.progress = 'to-do'
                     else:
                         task.progress = 'overdue'

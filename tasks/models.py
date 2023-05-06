@@ -83,7 +83,8 @@ class Task(models.Model):
             self.progress = 'completed'
         elif self.progress != 'completed' or not self.is_completed:
             datetime_now = datetime.now()
-            if self.due_datetime >= datetime_now:
+            if self.due_datetime.strftime('%Y-%m-%d %H:%M') >= datetime_now.\
+                    strftime('%Y-%m-%d %H:%M'):
                 self.progress = 'to-do'
             else:
                 self.progress = 'overdue'
