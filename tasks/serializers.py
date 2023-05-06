@@ -56,5 +56,6 @@ class TaskSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'task_name', 'details', 'category', 'due_date', 'due_time',
             'priority', 'progress', 'is_completed', 'datetime_completed',
-            'shared_to', 'is_shared', 'datetime_created', 'datetime_updated'
+            'shared_to', 'is_shared', 'datetime_created', 'datetime_updated',
+            'due_datetime'
         ]

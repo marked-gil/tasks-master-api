@@ -60,6 +60,16 @@ class Task(models.Model):
         super(Task, self).__init__(*args, **kwargs)
         self.old_is_completed = self.is_completed
 
+    @property
+    def due_datetime(self):
+        """
+        Combines due_date and due_time as read-only property of the Task object
+        """
+        if self.due_time:
+            return datetime.combine(self.due_date, self.due_time)
+        else:
+            return datetime.combine(self.due_date, time(23, 59, 59))
+
     def save(self, *args, **kwargs):
         """
         Automatically sets the progress value of the task, and sets the
@@ -72,19 +82,9 @@ class Task(models.Model):
         if self.is_completed:
             self.progress = 'completed'
         elif self.progress != 'completed' or not self.is_completed:
-            time_now = datetime.now().time()
-            if self.due_date == date.today():
-                if self.due_time is not None:
-                    if self.due_time >= time(hour=time_now.hour,
-                                             minute=time_now.
-                                             minute, second=0):
-                        self.progress = 'to-do'
-                    else:
-                        self.progress = 'overdue'
-                else:
-                    self.progress = 'to-do'
-            elif self.due_date < date.today():
-                self.progress = 'overdue'
-            elif self.due_date > date.today():
+            datetime_now = datetime.now()
+            if self.due_datetime >= datetime_now:
                 self.progress = 'to-do'
+            else:
+                self.progress = 'overdue'
         super(Task, self).save(*args, **kwargs)

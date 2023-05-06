@@ -40,22 +40,12 @@ class TaskList(generics.ListCreateAPIView):
 
             # Automatically sets the progress of the task
             for task in user_all_tasks:
-                time_now = datetime.now().time()
+                datetime_now = datetime.now()
                 if task.progress != 'completed':
-                    if task.due_date == date.today():
-                        if task.due_time is not None:
-                            if task.due_time >= time(hour=time_now.hour,
-                                                     minute=time_now.
-                                                     minute, second=0):
-                                task.progress = 'to-do'
-                            else:
-                                task.progress = 'overdue'
-                        else:
-                            task.progress = 'to-do'
-                    elif task.due_date < date.today():
-                        task.progress = 'overdue'
-                    elif task.due_date > date.today():
+                    if task.due_datetime >= datetime_now:
                         task.progress = 'to-do'
+                    else:
+                        task.progress = 'overdue'
                     task.save()
         else:
             user_all_tasks = Task.objects.none()
@@ -85,22 +75,12 @@ class TaskDetails(generics.RetrieveUpdateDestroyAPIView):
 
             # Automatically sets the progress of the task
             for task in user_all_tasks:
-                time_now = datetime.now().time()
+                datetime_now = datetime.now()
                 if task.progress != 'completed':
-                    if task.due_date == date.today():
-                        if task.due_time is not None:
-                            if task.due_time >= time(hour=time_now.hour,
-                                                     minute=time_now.
-                                                     minute, second=0):
-                                task.progress = 'to-do'
-                            else:
-                                task.progress = 'overdue'
-                        else:
-                            task.progress = 'to-do'
-                    elif task.due_date < date.today():
-                        task.progress = 'overdue'
-                    elif task.due_date > date.today():
+                    if task.due_datetime >= datetime_now:
                         task.progress = 'to-do'
+                    else:
+                        task.progress = 'overdue'
                     task.save()
         else:
             user_all_tasks = Task.objects.none()
