@@ -1,5 +1,9 @@
 # Tasks Master API
-This is the API that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API. (Note: As this is a protected API, authentication is required to view any of its data.)
+This is the API that serves the **Tasks Master** React application. This API is developed using the [Django Rest Framework](https://www.django-rest-framework.org/) and contains 4 models: profiles, categories, tasks, and comments. The timezone for this API is set to 'Europe/Dublin'. 
+
+Click [**Here**](https://tasks-master-api.herokuapp.com/) for the deployed API. 
+
+(Note: As this is a protected API, authentication is required to view any of its data.)
 
 Click [**Tasks Master**](https://tasks-master.herokuapp.com/) to view live React Application website.
 
